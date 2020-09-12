@@ -1,5 +1,5 @@
 /*
- * @Date           : 2020-09-09 22:46:44
+ * @Date           : 2020-09-09 23:56:34
  * @FilePath       : /node-quasar-fullstack/app/controllers/tutorial.controller.js
  * @Description    : 
  */
@@ -16,7 +16,10 @@ const getPagination = (page, size) => {
 // Create and Save a new Tutorial
 exports.create = (req, res) => {
   // Validate request
+  // console.log("------jinnnian----");
+  // console.log(req.body);
   if (!req.body.title) {
+   
     res.status(400).send({ message: "Content can not be empty!" });
     return;
   }

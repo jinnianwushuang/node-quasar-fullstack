@@ -1,4 +1,9 @@
 /*
+ * @Date           : 2020-09-09 23:56:34
+ * @FilePath       : /node-quasar-fullstack/quasar.conf.js
+ * @Description    : 
+ */
+/*
  * This file runs in a Node context (it's NOT transpiled by Babel), so use only
  * the ES6 features that are supported by your Node version. https://node.green/
  */
@@ -61,7 +66,13 @@ module.exports = function (/* ctx */) {
 
       // Options below are automatically set depending on the env, set them if you want to override
       // extractCSS: false,
+      env: {
+        // API_PREFIX: ctx.dev
+        //   ? 'https://dev.api.com'
+        //   : 'https://prod.api.com'
+        API_PREFIX:'api'
 
+      },
       // https://quasar.dev/quasar-cli/handling-webpack
       extendWebpack (cfg) {
       },
@@ -71,7 +82,13 @@ module.exports = function (/* ctx */) {
     devServer: {
       https: false,
       port: 8081,
-      open: true // opens browser window automatically
+      open: true, // opens browser window automatically
+      proxy: {
+        '/api/': {
+          target: 'http://localhost:8080',
+          pathRewrite: {'^/api/' : '/api/'}
+        }
+      }
     },
 
     // https://quasar.dev/quasar-cli/quasar-conf-js#Property%3A-framework

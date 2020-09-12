@@ -1,10 +1,20 @@
+/*
+ * @Date           : 2020-09-09 23:56:34
+ * @FilePath       : /node-quasar-fullstack/src/router/routes.js
+ * @Description    : 
+ */
 
 const routes = [
   {
     path: '/',
+    redirect: { name: 'tutorials' },
     component: () => import('layouts/MainLayout.vue'),
     children: [
-      { path: '', component: () => import('pages/Index.vue') }
+      {
+         path: 'tutorials',
+      name:"tutorials",
+      
+      component: () => import('src/pages/tutorials/index.vue') }
     ]
   },
 

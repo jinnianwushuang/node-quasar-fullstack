@@ -1,5 +1,5 @@
 /*
- * @Date           : 2020-09-09 22:46:44
+ * @Date           : 2020-09-09 23:56:34
  * @FilePath       : /node-quasar-fullstack/app/models/tutorial.model.js
  * @Description    : 
  */
@@ -18,7 +18,9 @@ module.exports = (mongoose, mongoosePaginate) => {
     object.id = _id;
     return object;
   });
+
   schema.plugin(mongoosePaginate);
+
   const Tutorial = mongoose.model("tutorial", schema);
   return Tutorial;
 };

@@ -1,3 +1,8 @@
+/*
+ * @Date           : 2020-09-09 23:56:34
+ * @FilePath       : /node-quasar-fullstack/app/routes/turorial.routes.js
+ * @Description    : 
+ */
 module.exports = app => {
   const tutorials = require("../controllers/tutorial.controller.js");
 
