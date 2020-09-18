@@ -6,5 +6,6 @@
 
 
 export * as api_tutorials from "src/api/module/tutorials.js"
+export * as api_authors from "src/api/module/authors.js"
 
 

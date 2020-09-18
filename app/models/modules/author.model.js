@@ -1,19 +1,17 @@
 /*
  * @Date           : 2020-09-09 23:56:34
- * @FilePath       : /node-quasar-fullstack/app/models/tutorial.model.js
+ * @FilePath       : /node-quasar-fullstack/app/models/modules/author.model.js
  * @Description    : 
  */
+const Author_description = require("../../description/author.description")
 module.exports = (mongoose, mongoosePaginate) => {
   var schema = mongoose.Schema(
-    {
-      title: String,
-      description: String,
-      published: Boolean
-    },
+    Author_description.schema_field,
     { timestamps: true }
   );
 
   schema.method("toJSON", function() {
+    
     const { __v, _id, ...object } = this.toObject();
     object.id = _id;
     return object;
@@ -21,6 +19,6 @@ module.exports = (mongoose, mongoosePaginate) => {
 
   schema.plugin(mongoosePaginate);
 
-  const Tutorial = mongoose.model("tutorial", schema);
-  return Tutorial;
+  const Author = mongoose.model("author", schema);
+  return Author;
 };

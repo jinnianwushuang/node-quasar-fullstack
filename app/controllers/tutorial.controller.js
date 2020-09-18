@@ -5,10 +5,10 @@
  */
 const db = require("../models");
 const Tutorial = db.tutorials;
-
+const Tutorial_description = require("../description/tutorial.description")
 const getPagination = (page, size) => {
-  const limit = size ? +size : 3;
-  const offset = page ? page * limit : 0;
+  const limit = size ? +size : 20;
+  const offset = page ? (page - 1) * limit : 0;
 
   return { limit, offset };
 };
@@ -60,7 +60,9 @@ exports.findAll = (req, res) => {
         totalItems: data.totalDocs,
         tutorials: data.docs,
         totalPages: data.totalPages,
-        currentPage: data.page - 1,
+        currentPage: data.page ,
+        pageSize:data.limit,
+        // row_data:data
       });
     })
     .catch((err) => {
@@ -163,7 +165,8 @@ exports.findAllPublished = (req, res) => {
         totalItems: data.totalDocs,
         tutorials: data.docs,
         totalPages: data.totalPages,
-        currentPage: data.page - 1,
+        currentPage: data.page ,
+        pageSize:data.limit,
       });
     })
     .catch((err) => {
@@ -173,3 +176,18 @@ exports.findAllPublished = (req, res) => {
       });
     });
 };
+
+// 返回字段信息说明
+
+exports.fieldDescription = (req,res) =>{
+  res.send({
+    description:Tutorial_description.field_description
+  })
+}
+
+// 根据传入数量快速mock 数据
+exports.fastMockData = (req,res) =>{
+  const { num } = req.query;
+  
+}
+

@@ -1,14 +1,28 @@
 {
   "name": "node-quasar-fullstack",
   "version": "0.0.1",
-  "description": "A Quasar Framework app",
-  "productName": "Quasar App",
+  "description": "锦年node全栈学习项目",
+  "productName": "锦年fullstack",
   "author": "jinnianwushuang <478640949@qq.com>",
   "private": true,
   "main": "server.js",
+  "apidoc": {
+    "name": "锦年node全栈学习项目API",
+    "version": "0.1.0",
+    "description": "明日复明日，万事成蹉跎。",
+    "title": "锦年node全栈学习项目API",
+    "url": "http://192.168.0.36:19090"
+  },
   "scripts": {
     "test": "echo \"No test specified\" && exit 0",
-    "start": "concurrently \" nodemon --harmony  server.js\" \"quasar dev\""
+    "start2": "concurrently \" nodemon --harmony  server.js\" \"quasar dev\"",
+    "start-makedoc": "apidoc -i app/ -o apidoc/",
+    "start-docpage": "http-server ./apidoc -p 19092 -o",
+    "start-server": "nodemon --harmony  server.js",
+    "start-webpage": "quasar dev",
+    "start-doc-s": "run-s start-makedoc start-docpage",
+    "start-fullstack-p": "run-p  start-server  start-webpage",
+    "start": "run-p start-fullstack-p start-doc-s"
   },
   "dependencies": {
     "@quasar/extras": "^1.0.0",
@@ -18,6 +32,7 @@
     "core-js": "^3.6.5",
     "cors": "^2.8.5",
     "express": "^4.17.1",
+    "lodash": "^4.17.20",
     "mongoose": "^5.8.10",
     "mongoose-paginate-v2": "^1.3.9",
     "quasar": "^1.0.0",
@@ -25,7 +40,10 @@
   },
   "devDependencies": {
     "@quasar/app": "^2.0.0",
-    "nodemon": "^2.0.4"
+    "apidoc": "^0.25.0",
+    "http-server": "^0.12.3",
+    "nodemon": "^2.0.4",
+    "npm-run-all": "^4.1.5"
   },
   "browserslist": [
     "ie >= 11",

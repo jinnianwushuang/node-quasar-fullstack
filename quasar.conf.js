@@ -10,7 +10,20 @@
 
 // Configuration for your app
 // https://quasar.dev/quasar-cli/quasar-conf-js
+function getIPAddress(){
+  var interfaces = require('os').networkInterfaces();
+  for(var devName in interfaces){
+      var iface = interfaces[devName];
+      for(var i=0;i<iface.length;i++){
+          var alias = iface[i];
+          if(alias.family === 'IPv4' && alias.address !== '127.0.0.1' && !alias.internal){
+              return alias.address;
+          }
+      }
+  }
+}
 
+const LOCAL_IP = '192.168.0.36'
 module.exports = function (/* ctx */) {
   return {
     // https://quasar.dev/quasar-cli/supporting-ts
@@ -26,6 +39,7 @@ module.exports = function (/* ctx */) {
       
       'i18n',
       'axios',
+      "lodash"
     ],
 
     // https://quasar.dev/quasar-cli/quasar-conf-js#Property%3A-css
@@ -80,12 +94,13 @@ module.exports = function (/* ctx */) {
 
     // Full list of options: https://quasar.dev/quasar-cli/quasar-conf-js#Property%3A-devServer
     devServer: {
+      host:LOCAL_IP,
       https: false,
-      port: 8081,
+      port: 20000,
       open: true, // opens browser window automatically
       proxy: {
         '/api/': {
-          target: 'http://localhost:8080',
+          target: 'http://localhost:19090',
           pathRewrite: {'^/api/' : '/api/'}
         }
       }

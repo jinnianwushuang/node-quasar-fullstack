@@ -4,48 +4,211 @@
  * @Description    : 
 -->
 <template>
-  <div>
-    <div class="q-pa-md">
-      <q-table title="Treats"
-       :data="data" 
-       :columns="columns"
-        :pagination="initialPagination"
-        row-key="name" />
+  <div class="q-px-md">
+    <!-- 头部功能栏 -->
+    <div class="q-gutter-x-md q-my-md">
+      <q-btn color="primary" label="新增数据" @click="handle_click_add" />
+      <q-btn color="primary" label="刷新数据" @click="handle_click_refresh" />
+      <q-btn color="primary" label="模拟数据" @click="handle_click_mock_data" />
+      <q-btn color="red" label="一键删除" @click="handle_click_delete_all" />
     </div>
+    <!-- 表格区域 -->
+    <div class="q-pa-md">
+      <q-table
+        title="教程信息"
+        :data="data"
+        :columns="columns"
+        hide-pagination
+        :pagination.sync="pagination"
+        row-key="name"
+      >
+        <template v-slot:body-cell-handle="props">
+          <q-td :props="props">
+            <div class="q-gutter-x-md">
+              <q-btn
+                color="primary"
+                label="编辑"
+                @click="handle_click_edit(props.row)"
+              />
+              <q-btn
+                color="red"
+                label="删除"
+                @click="handle_click_delete(props.row)"
+              />
+            </div>
+          </q-td>
+        </template>
+        <template v-slot:bottom>
+          <my-pagination
+            :total="total"
+            @pagination_change="handle_pagination_change"
+          ></my-pagination>
+        </template>
+      </q-table>
+    </div>
+    <!-- 弹出窗口 -->
+    <q-dialog v-model="show_edit_dialog">
+      <q-card>
+        <q-card-section>
+          <div class="text-h6">编辑弹窗</div>
+        </q-card-section>
+
+        <q-card-section class="q-pt-none">
+          Lorem ipsum dolor sit amet consectetur adipisicing elit.
+        </q-card-section>
+        <q-card-actions align="right">
+          <q-btn
+            class="q-mx-md"
+            label="确认"
+            color="primary"
+            @click="handle_click_submit"
+          />
+          <q-btn label="取消" color="red" v-close-popup />
+        </q-card-actions>
+      </q-card>
+    </q-dialog>
   </div>
 </template>
 
 <script>
 import { columns } from "src/pages/tutorials/config/index.js";
 import { api_tutorials } from "src/api/index.js";
+import myPagination from "src/components/pagination/pagination1.vue";
 export default {
+  components: {
+    myPagination
+  },
   data() {
     return {
       columns,
       data: [],
-            initialPagination: {
-        sortBy: 'desc',
-        descending: false,
-        page: 0,
-        rowsPerPage: 100
-        // rowsNumber: xx if getting data from a server
+      show_edit_dialog: false,
+      total: 0,
+      pagination: {
+        currentPage: 1,
+        pageSize: 10,
+        page: 1,
+        rowsPerPage: 10
       },
+      editing_obj_template: {
+        description: "",
+        published: true,
+        title: "全栈 学习"
+      },
+      editing_obj: {}
     };
   },
   created() {
     this.init_table_data();
+    this.init_editing_obj();
   },
   methods: {
     init_table_data() {
       let params = {
-        page: 0,
-        size: 100
+        page: this.pagination.currentPage,
+        size: this.pagination.pageSize
       };
       console.log("api_tutorials", api_tutorials);
       api_tutorials.get_tutorials_findAll(params).then(res => {
         console.log("----调用接口返回数据");
         console.log(res.data.tutorials);
         this.data = res.data.tutorials;
+        this.total = res.data.totalItems;
+        this.$forceUpdate()
+
+        this.pagination = {
+          currentPage: res.data.currentPage,
+          pageSize: res.data.pageSize
+        };
+      });
+    },
+    //翻页器数据改变
+    handle_pagination_change(obj) {
+      console.log("1");
+      console.log("obj", obj);
+      this.pagination = {
+        currentPage: obj.currentPage,
+        pageSize: obj.pageSize,
+        page: obj.currentPage,
+        rowsPerPage: obj.pageSize
+      };
+      this.init_table_data();
+    },
+    //初始化 editing_obj
+    init_editing_obj() {
+      console.log("初始化 editing_obj");
+      this.editing_obj = this.$lodash.cloneDeep(this.editing_obj_template);
+    },
+    // 新增
+    handle_click_add() {
+      console.log("新增");
+      this.init_editing_obj();
+      this.show_edit_dialog = true;
+    },
+    // 编辑
+    handle_click_edit(item) {
+      console.log("编辑", item);
+
+      this.editing_obj = this.$lodash.cloneDeep(item);
+      this.show_edit_dialog = true;
+    },
+    // 删除
+    handle_click_delete(item) {
+      console.log("删除单个", item);
+      api_tutorials.delete_tutorials_by_id({ id: item.id }).then(res => {
+        this.init_table_data();
+      });
+    },
+    // 一键删除
+    handle_click_delete_all() {
+      console.log("删除所有");
+      api_tutorials.delete_tutorials_all().then(res => {
+        this.init_table_data();
+      });
+    },
+    // 刷新
+    handle_click_refresh() {
+      console.log("刷新数据");
+      this.init_table_data();
+    },
+    // 批量新增模拟数据
+    handle_click_mock_data() {
+      console.log("批量新增模拟数据");
+      for (let i = 0; i < 500; i++) {
+        let obj = {
+          description: "学习稳如狗 " + i,
+          published: i % 2 == 0 ? true : false,
+          title: "全栈 学习" + i
+        };
+        this.handle_click_submit_add(obj);
+      }
+    },
+    // 新增或者修改后提交服务器
+    handle_click_submit() {
+      console.log("新增或者修改后提交服务器");
+      this.show_edit_dialog = false;
+      if (this.editing_obj.id) {
+        // 编辑
+        this.handle_click_submit_edit();
+      } else {
+        //新增
+        this.handle_click_submit_add();
+      }
+    },
+    // 提交新增
+    handle_click_submit_add(obj) {
+      let params = obj || this.editing_obj;
+      api_tutorials.post_tutorials_create(params).then(res => {
+        if (!obj) {
+          this.init_table_data();
+        }
+      });
+    },
+    //提交修改
+    handle_click_submit_edit() {
+      let params = obj || this.editing_obj;
+      api_tutorials.put_tutorials_by_id(params).then(res => {
+        this.init_table_data();
       });
     }
   }

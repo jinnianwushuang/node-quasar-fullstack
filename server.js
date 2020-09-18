@@ -1,3 +1,8 @@
+/*
+ * @Date           : 2020-09-09 23:56:34
+ * @FilePath       : /node-quasar-fullstack/server.js
+ * @Description    : 
+ */
 const express = require("express");
 const bodyParser = require("body-parser");
 const cors = require("cors");
@@ -5,7 +10,15 @@ const cors = require("cors");
 const app = express();
 
 var corsOptions = {
-  origin: "http://localhost:8081"
+  // origin: "http://localhost:8081"
+  function (origin, callback) {
+    callback(null, true)
+    // if (whitelist.indexOf(origin) !== -1) {
+    //   callback(null, true)
+    // } else {
+    //   callback(new Error('Not allowed by CORS'))
+    // }
+  }
 };
 
 app.use(cors(corsOptions));
@@ -32,13 +45,14 @@ db.mongoose
 
 // simple route
 app.get("/", (req, res) => {
-  res.json({ message: "Welcome to bezkoder application." });
+  res.json({ message: "Welcome to jinnian application." });
 });
 
-require("./app/routes/turorial.routes")(app);
+// 注册所有路由
+require("./app/routes/index")(app)
 
 // set port, listen for requests
-const PORT = process.env.PORT || 8080;
+const PORT = process.env.PORT || 19090;
 app.listen(PORT, () => {
   console.log(`Server is running on port ${PORT}.`);
 });

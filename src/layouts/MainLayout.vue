@@ -28,6 +28,7 @@
       v-model="leftDrawerOpen"
       show-if-above
       bordered
+      :width="120"
       content-class="bg-grey-1"
     >
       <q-list>
@@ -49,16 +50,7 @@
 
 <script>
 
-
-const menu_data = [
-  {
-    title: '教程模块',
-    path: 'tutorials',
-    name:"tutorials",
-  },
-
-];
-
+import menu_data from  "src/config/menu.js"
 export default {
   name: 'MainLayout',
   data () {
