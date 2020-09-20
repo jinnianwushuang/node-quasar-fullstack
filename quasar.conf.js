@@ -23,7 +23,11 @@ function getIPAddress(){
   }
 }
 
-const LOCAL_IP = '192.168.0.36'
+
+// const LOCAL_IP = '192.168.0.36'
+//process.env.
+// set userhost=192.168.0.36 & serverport=19090 & webpageport=20000
+const API_DOMAIN =`http://${process.env.userhost.trim()}:${process.env.serverport.trim()}`
 module.exports = function (/* ctx */) {
   return {
     // https://quasar.dev/quasar-cli/supporting-ts
@@ -94,13 +98,13 @@ module.exports = function (/* ctx */) {
 
     // Full list of options: https://quasar.dev/quasar-cli/quasar-conf-js#Property%3A-devServer
     devServer: {
-      host:LOCAL_IP,
+      host:process.env.userhost.trim(),
       https: false,
-      port: 20000,
+      port: process.env.webpageport.trim(),
       open: true, // opens browser window automatically
       proxy: {
         '/api/': {
-          target: 'http://localhost:19090',
+          target: API_DOMAIN,
           pathRewrite: {'^/api/' : '/api/'}
         }
       }

@@ -52,7 +52,8 @@ app.get("/", (req, res) => {
 require("./app/routes/index")(app)
 
 // set port, listen for requests
-const PORT = process.env.PORT || 19090;
-app.listen(PORT, () => {
-  console.log(`Server is running on port ${PORT}.`);
+const PORT = process.env.serverport.trim() ;
+const HOST = process.env.userhost.trim() ;
+app.listen(PORT,HOST, () => {
+  console.log(`Server is running on http://${HOST}:${PORT}`);
 });

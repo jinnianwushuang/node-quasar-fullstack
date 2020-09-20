@@ -15,11 +15,10 @@
   },
   "scripts": {
     "test": "echo \"No test specified\" && exit 0",
-    "start2": "concurrently \" nodemon --harmony  server.js\" \"quasar dev\"",
     "start-makedoc": "apidoc -i app/ -o apidoc/",
-    "start-docpage": "http-server ./apidoc -p 19092 -o",
-    "start-server": "nodemon --harmony  server.js",
-    "start-webpage": "quasar dev",
+    "start-docpage": "http-server ./apidoc -a 192.168.0.36 -p 19092 -s -o ",
+    "start-server": "set userhost=192.168.0.36 & set serverport=19090 & set webpageport=20000 & nodemon --harmony  server.js",
+    "start-webpage": "set userhost=192.168.0.36 & set serverport=19090 & set webpageport=20000 & quasar dev",
     "start-doc-s": "run-s start-makedoc start-docpage",
     "start-fullstack-p": "run-p  start-server  start-webpage",
     "start": "run-p start-fullstack-p start-doc-s"
@@ -28,7 +27,6 @@
     "@quasar/extras": "^1.0.0",
     "axios": "^0.18.1",
     "body-parser": "^1.19.0",
-    "concurrently": "^5.3.0",
     "core-js": "^3.6.5",
     "cors": "^2.8.5",
     "express": "^4.17.1",
