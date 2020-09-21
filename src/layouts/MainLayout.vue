@@ -5,6 +5,7 @@
 -->
 <template>
   <q-layout view="lHh Lpr lFf">
+          <q-resize-observer @resize="on_window_resize" />
     <q-header elevated>
       <q-toolbar>
         <q-btn
@@ -50,6 +51,8 @@
 
 <script>
 
+import { mapActions } from 'vuex';
+
 import menu_data from  "src/config/menu.js"
 export default {
   name: 'MainLayout',
@@ -60,10 +63,19 @@ export default {
     }
   },
   methods: {
+        ...mapActions([
+      'set_window_size', //also supports payload `this.nameOfAction(amount)` 
+    ]),
     go_to_page(item) {
        this.$router.push({
          name:item.name
        })
+    },
+    on_window_resize(size){
+      console.log('----size  ---',size);
+      // size.height= size.height<600?600:size.height
+      // size.width =size.width<1200?1200:size.width
+      this.set_window_size(size)
     }
   },
 }

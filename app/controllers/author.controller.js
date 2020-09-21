@@ -1,11 +1,12 @@
 /*
  * @Date           : 2020-09-09 23:56:34
  * @FilePath       : /node-quasar-fullstack/app/controllers/author.controller.js
- * @Description    : 
+ * @Description    :
  */
 const db = require("../models");
 const Author = db.authors;
-const Author_description = require("../description/author.description")
+const Author_description = require("../description/author.description");
+const MESSAGE_CODE = require("../config/code.config");
 const getPagination = (page, size) => {
   const limit = size ? +size : 20;
   const offset = page ? (page - 1) * limit : 0;
@@ -19,8 +20,11 @@ exports.create = (req, res) => {
   // console.log("------jinnnian----");
   // console.log(req.body);
   if (!req.body.name) {
-   
-    res.status(400).send({ message: "Content can not be empty!" });
+    res.send({
+      code: MESSAGE_CODE.ERROR_PARAMETER_WRONG,
+      message: "参数非法"
+    });
+
     return;
   }
 
@@ -29,28 +33,29 @@ exports.create = (req, res) => {
     name: req.body.name,
     age: req.body.age || 18,
     sex: req.body.sex,
-    married:req.body.married,
-    nationality:req.body.nationality || '中国',
-    address:req.body.address,
-    tel:req.body.tel,
-    hobby:req.body.hobby ,
-    description:req.body.description,
-    remark:req.body.remark
-
-
-
+    married: req.body.married,
+    nationality: req.body.nationality || "中国",
+    address: req.body.address,
+    tel: req.body.tel,
+    hobby: req.body.hobby,
+    description: req.body.description,
+    remark: req.body.remark
   });
 
   // Save Author in the database
   author
     .save(author)
-    .then((data) => {
-      res.send(data);
+    .then(data => {
+      res.send({
+        code: MESSAGE_CODE.SUCCESS,
+        message: "",
+        data
+      });
     })
-    .catch((err) => {
-      res.status(500).send({
-        message:
-          err.message || "Some error occurred while creating the Author.",
+    .catch(err => {
+      res.send({
+        code: MESSAGE_CODE.ERROR_SERVER_WRONG,
+        message: err.message || "服务器处理失败."
       });
     });
 };
@@ -65,18 +70,23 @@ exports.findAll = (req, res) => {
   const { limit, offset } = getPagination(page, size);
 
   Author.paginate(condition, { offset, limit })
-    .then((data) => {
+    .then(data => {
       res.send({
-        totalItems: data.totalDocs,
-        authors: data.docs,
-        totalPages: data.totalPages,
-        currentPage: data.page ,
+        code: MESSAGE_CODE.SUCCESS,
+        message: "",
+        data: {
+          total: data.totalDocs,
+          authors: data.docs,
+          // totalPages: data.totalPages,
+          currentPage: data.page,
+          pageSize: data.limit
+        }
       });
     })
-    .catch((err) => {
-      res.status(500).send({
-        message:
-          err.message || "Some error occurred while retrieving authors.",
+    .catch(err => {
+      res.send({
+        code: MESSAGE_CODE.ERROR_SERVER_WRONG,
+        message: err.message || "服务器处理失败."
       });
     });
 };
@@ -86,39 +96,57 @@ exports.findOne = (req, res) => {
   const id = req.params.id;
 
   Author.findById(id)
-    .then((data) => {
+    .then(data => {
       if (!data)
-        res.status(404).send({ message: "Not found Author with id " + id });
-      else res.send(data);
+        res.send({
+          code: MESSAGE_CODE.ERROR_NOT_FOUND,
+          message: "不存在此数据 id " + id
+        });
+      else {
+        res.send({
+          code: MESSAGE_CODE.SUCCESS,
+          message: "",
+          data
+        });
+      }
     })
-    .catch((err) => {
-      res
-        .status(500)
-        .send({ message: "Error retrieving Author with id=" + id });
+    .catch(err => {
+      res.send({
+        code: MESSAGE_CODE.ERROR_SERVER_WRONG,
+        message: "服务器处理失败 id=" + id
+      });
     });
 };
 
 // Update a Author by the id in the request
 exports.update = (req, res) => {
   if (!req.body) {
-    return res.status(400).send({
-      message: "Data to update can not be empty!",
+    return res.send({
+      code: MESSAGE_CODE.ERROR_PARAMETER_WRONG,
+      message: "参数非法!"
     });
   }
 
   const id = req.params.id;
 
   Author.findByIdAndUpdate(id, req.body, { useFindAndModify: false })
-    .then((data) => {
+    .then(data => {
       if (!data) {
-        res.status(404).send({
-          message: `Cannot update Author with id=${id}. Maybe Author was not found!`,
+        res.send({
+          code: MESSAGE_CODE.ERROR_NOT_FOUND,
+          message: `数据不存在 id=${id}. `
         });
-      } else res.send({ message: "Author was updated successfully." });
+      } else {
+        res.send({
+          code: MESSAGE_CODE.SUCCESS,
+          message: "数据处理成功"
+        });
+      }
     })
-    .catch((err) => {
-      res.status(500).send({
-        message: "Error updating Author with id=" + id,
+    .catch(err => {
+      res.send({
+        code: MESSAGE_CODE.ERROR_SERVER_WRONG,
+        message: "服务器处理失败 id=" + id
       });
     });
 };
@@ -128,20 +156,23 @@ exports.delete = (req, res) => {
   const id = req.params.id;
 
   Author.findByIdAndRemove(id, { useFindAndModify: false })
-    .then((data) => {
+    .then(data => {
       if (!data) {
-        res.status(404).send({
-          message: `Cannot delete Author with id=${id}. Maybe Author was not found!`,
+        res.send({
+          code: MESSAGE_CODE.ERROR_NOT_FOUND,
+          message: `数据不存在 id=${id}.  `
         });
       } else {
         res.send({
-          message: "Author was deleted successfully!",
+          code: MESSAGE_CODE.SUCCESS,
+          message: "数据处理成功!"
         });
       }
     })
-    .catch((err) => {
-      res.status(500).send({
-        message: "Could not delete Author with id=" + id,
+    .catch(err => {
+      res.send({
+        code: MESSAGE_CODE.ERROR_SERVER_WRONG,
+        message: "服务器处理失败 id=" + id
       });
     });
 };
@@ -149,15 +180,16 @@ exports.delete = (req, res) => {
 // Delete all Authors from the database.
 exports.deleteAll = (req, res) => {
   Author.deleteMany({})
-    .then((data) => {
+    .then(data => {
       res.send({
-        message: `${data.deletedCount} Authors were deleted successfully!`,
+        code: MESSAGE_CODE.SUCCESS,
+        message: `删除数据成功，数量： ${data.deletedCount} !`
       });
     })
-    .catch((err) => {
-      res.status(500).send({
-        message:
-          err.message || "Some error occurred while removing all authors.",
+    .catch(err => {
+      res.send({
+        code: MESSAGE_CODE.ERROR_SERVER_WRONG,
+        message: err.message || "服务器处理失败."
       });
     });
 };
@@ -167,27 +199,36 @@ exports.findAllBySex = (req, res) => {
   const { page, size } = req.query;
   const { limit, offset } = getPagination(page, size);
 
-  Author.paginate({ sex: sex|| 1 }, { offset, limit })
-    .then((data) => {
+  Author.paginate({ sex: sex || 1 }, { offset, limit })
+    .then(data => {
       res.send({
-        totalItems: data.totalDocs,
-        authors: data.docs,
-        totalPages: data.totalPages,
-        currentPage: data.page ,
+        code: MESSAGE_CODE.SUCCESS,
+        message: "",
+        data: {
+          total: data.totalDocs,
+          authors: data.docs,
+          // totalPages: data.totalPages,
+          currentPage: data.page,
+          pageSize: data.limit
+        }
       });
     })
-    .catch((err) => {
-      res.status(500).send({
-        message:
-          err.message || "Some error occurred while retrieving authors.",
+    .catch(err => {
+      res.send({
+        code: MESSAGE_CODE.ERROR_SERVER_WRONG,
+        message: err.message || "服务器处理失败."
       });
     });
 };
 
 // 返回字段信息说明
 
-exports.fieldDescription = (req,res) =>{
+exports.fieldDescription = (req, res) => {
   res.send({
-    description:Author_description.field_description
-  })
-}
+    code: MESSAGE_CODE.SUCCESS,
+    message: "",
+    data: {
+      description: Author_description.field_description
+    }
+  });
+};

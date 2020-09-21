@@ -57,7 +57,7 @@ export default {
     return {
       currentPage: 1,
       max_page: 1,
-      pageSize: 5,
+      pageSize: 20,
       pageSize_options: [5, 10, 20, 50, 100]
     };
   },

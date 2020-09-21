@@ -1,11 +1,12 @@
 /*
  * @Date           : 2020-09-09 23:56:34
  * @FilePath       : /node-quasar-fullstack/app/controllers/tutorial.controller.js
- * @Description    : 
+ * @Description    :
  */
 const db = require("../models");
 const Tutorial = db.tutorials;
-const Tutorial_description = require("../description/tutorial.description")
+const Tutorial_description = require("../description/tutorial.description");
+const MESSAGE_CODE = require("../config/code.config");
 const getPagination = (page, size) => {
   const limit = size ? +size : 20;
   const offset = page ? (page - 1) * limit : 0;
@@ -19,8 +20,10 @@ exports.create = (req, res) => {
   // console.log("------jinnnian----");
   // console.log(req.body);
   if (!req.body.title) {
-   
-    res.status(400).send({ message: "Content can not be empty!" });
+    res.send({
+      code: MESSAGE_CODE.ERROR_PARAMETER_WRONG,
+      message: "参数非法!"
+    });
     return;
   }
 
@@ -28,19 +31,23 @@ exports.create = (req, res) => {
   const tutorial = new Tutorial({
     title: req.body.title,
     description: req.body.description,
-    published: req.body.published ? req.body.published : false,
+    published: req.body.published ? req.body.published : false
   });
 
   // Save Tutorial in the database
   tutorial
     .save(tutorial)
-    .then((data) => {
-      res.send(data);
+    .then(data => {
+      res.send({
+        code: MESSAGE_CODE.SUCCESS,
+        message: "",
+        data
+      });
     })
-    .catch((err) => {
-      res.status(500).send({
-        message:
-          err.message || "Some error occurred while creating the Tutorial.",
+    .catch(err => {
+      res.send({
+        code: MESSAGE_CODE.ERROR_SERVER_WRONG,
+        message: err.message || "服务器处理失败."
       });
     });
 };
@@ -55,20 +62,24 @@ exports.findAll = (req, res) => {
   const { limit, offset } = getPagination(page, size);
 
   Tutorial.paginate(condition, { offset, limit })
-    .then((data) => {
+    .then(data => {
       res.send({
-        totalItems: data.totalDocs,
-        tutorials: data.docs,
-        totalPages: data.totalPages,
-        currentPage: data.page ,
-        pageSize:data.limit,
-        // row_data:data
+        code: MESSAGE_CODE.SUCCESS,
+        message: "",
+        data: {
+          total: data.totalDocs,
+          tutorials: data.docs,
+          // totalPages: data.totalPages,
+          currentPage: data.page,
+          pageSize: data.limit
+          // row_data:data
+        }
       });
     })
-    .catch((err) => {
-      res.status(500).send({
-        message:
-          err.message || "Some error occurred while retrieving tutorials.",
+    .catch(err => {
+      res.send({
+        code: MESSAGE_CODE.ERROR_SERVER_WRONG,
+        message: err.message || "服务器处理失败."
       });
     });
 };
@@ -78,39 +89,56 @@ exports.findOne = (req, res) => {
   const id = req.params.id;
 
   Tutorial.findById(id)
-    .then((data) => {
+    .then(data => {
       if (!data)
-        res.status(404).send({ message: "Not found Tutorial with id " + id });
-      else res.send(data);
+        res.send({
+          code: MESSAGE_CODE.ERROR_NOT_FOUND,
+          message: "数据不存在 id " + id
+        });
+      else {
+        res.send({
+          code: MESSAGE_CODE.SUCCESS,
+          message: "",
+          data
+        });
+      }
     })
-    .catch((err) => {
-      res
-        .status(500)
-        .send({ message: "Error retrieving Tutorial with id=" + id });
+    .catch(err => {
+      res.send({
+        code: MESSAGE_CODE.ERROR_SERVER_WRONG,
+        message: "服务器处理失败 id=" + id
+      });
     });
 };
 
 // Update a Tutorial by the id in the request
 exports.update = (req, res) => {
   if (!req.body) {
-    return res.status(400).send({
-      message: "Data to update can not be empty!",
+    return res.send({
+      code: MESSAGE_CODE.ERROR_PARAMETER_WRONG,
+      message: "参数非法!"
     });
   }
 
   const id = req.params.id;
 
   Tutorial.findByIdAndUpdate(id, req.body, { useFindAndModify: false })
-    .then((data) => {
+    .then(data => {
       if (!data) {
-        res.status(404).send({
-          message: `Cannot update Tutorial with id=${id}. Maybe Tutorial was not found!`,
+        res.send({
+          code: MESSAGE_CODE.ERROR_NOT_FOUND,
+          message: `数据不存在 id=${id} `
         });
-      } else res.send({ message: "Tutorial was updated successfully." });
+      } else
+        res.send({
+          code: MESSAGE_CODE.SUCCESS,
+          message: ""
+        });
     })
-    .catch((err) => {
-      res.status(500).send({
-        message: "Error updating Tutorial with id=" + id,
+    .catch(err => {
+      res.send({
+        code: MESSAGE_CODE.ERROR_SERVER_WRONG,
+        message: "服务器处理失败 id=" + id
       });
     });
 };
@@ -120,20 +148,23 @@ exports.delete = (req, res) => {
   const id = req.params.id;
 
   Tutorial.findByIdAndRemove(id, { useFindAndModify: false })
-    .then((data) => {
+    .then(data => {
       if (!data) {
-        res.status(404).send({
-          message: `Cannot delete Tutorial with id=${id}. Maybe Tutorial was not found!`,
+        res.send({
+          code: MESSAGE_CODE.ERROR_NOT_FOUND,
+          message: `数据不存在 id=${id}.`
         });
       } else {
         res.send({
-          message: "Tutorial was deleted successfully!",
+          code: MESSAGE_CODE.SUCCESS,
+          message: ""
         });
       }
     })
-    .catch((err) => {
-      res.status(500).send({
-        message: "Could not delete Tutorial with id=" + id,
+    .catch(err => {
+      res.send({
+        code: MESSAGE_CODE.ERROR_SERVER_WRONG,
+        message: "服务器处理失败 id=" + id
       });
     });
 };
@@ -141,15 +172,16 @@ exports.delete = (req, res) => {
 // Delete all Tutorials from the database.
 exports.deleteAll = (req, res) => {
   Tutorial.deleteMany({})
-    .then((data) => {
+    .then(data => {
       res.send({
-        message: `${data.deletedCount} Tutorials were deleted successfully!`,
+        code: MESSAGE_CODE.SUCCESS,
+        message: `删除成功,数量：${data.deletedCount} `
       });
     })
-    .catch((err) => {
-      res.status(500).send({
-        message:
-          err.message || "Some error occurred while removing all tutorials.",
+    .catch(err => {
+      res.send({
+        code: MESSAGE_CODE.ERROR_SERVER_WRONG,
+        message: err.message || "服务器处理失败."
       });
     });
 };
@@ -160,34 +192,40 @@ exports.findAllPublished = (req, res) => {
   const { limit, offset } = getPagination(page, size);
 
   Tutorial.paginate({ published: true }, { offset, limit })
-    .then((data) => {
+    .then(data => {
       res.send({
-        totalItems: data.totalDocs,
-        tutorials: data.docs,
-        totalPages: data.totalPages,
-        currentPage: data.page ,
-        pageSize:data.limit,
+        code: MESSAGE_CODE.SUCCESS,
+        message: "",
+        date: {
+          total: data.totalDocs,
+          tutorials: data.docs,
+          // totalPages: data.totalPages,
+          currentPage: data.page,
+          pageSize: data.limit
+        }
       });
     })
-    .catch((err) => {
-      res.status(500).send({
-        message:
-          err.message || "Some error occurred while retrieving tutorials.",
+    .catch(err => {
+      res.send({
+        code: MESSAGE_CODE.ERROR_SERVER_WRONG,
+        message: err.message || "服务器处理失败."
       });
     });
 };
 
 // 返回字段信息说明
 
-exports.fieldDescription = (req,res) =>{
+exports.fieldDescription = (req, res) => {
   res.send({
-    description:Tutorial_description.field_description
-  })
-}
+    code: MESSAGE_CODE.SUCCESS,
+    message: "",
+    data: {
+      description: Tutorial_description.field_description
+    }
+  });
+};
 
 // 根据传入数量快速mock 数据
-exports.fastMockData = (req,res) =>{
+exports.fastMockData = (req, res) => {
   const { num } = req.query;
-  
-}
-
+};
