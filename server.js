@@ -20,6 +20,33 @@ var corsOptions = {
   }
 };
 
+
+
+// appenders  输出源配置  categories  输出类别  
+const log4js = require("log4js");
+
+log4js.configure({
+  appenders: {
+    everything: { type: 'dateFile', filename: './log/category_default.log' },
+    console_debug: { type: 'dateFile', filename: './log/category_console.log' },
+
+  },
+  categories: {
+    default: { appenders: [ 'everything' ], level: 'debug' },
+    category_console: { appenders: [ 'console_debug' ], level: 'debug' }
+  }
+});
+// , format: (req, res, format) =>format(`:method :url  :status  :response-time ms ${res.reqUserId}`)
+
+const logger = log4js.getLogger()
+//ALL < TRACE < DEBUG < INFO < WARN < ERROR < FATAL < MARK < OFF
+// 级别 > INFO 的日志才会被打印
+logger.level = "debug"
+// 日志的级别是 WARN 
+app.use( log4js.connectLogger(logger, {level: 'debug'}) );
+// logger.info('sssssssssssssss------' )
+
+
 app.use(cors(corsOptions));
 
 // parse requests of content-type - application/json

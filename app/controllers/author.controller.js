@@ -14,6 +14,9 @@ const getPagination = (page, size) => {
   return { limit, offset };
 };
 
+const logger =  require("log4js").getLogger('category_console')
+const logger_util =require("../util/logger.util.js");
+
 // Create and Save a new Author
 exports.create = (req, res) => {
   // Validate request
@@ -62,6 +65,11 @@ exports.create = (req, res) => {
 
 // Retrieve all Authors from the database.
 exports.findAll = (req, res) => {
+
+  logger.info(logger_util.formart_request(req))
+  
+  // console.log(req)
+
   const { page, size, name } = req.query;
   var condition = name
     ? { name: { $regex: new RegExp(name), $options: "i" } }
@@ -82,12 +90,18 @@ exports.findAll = (req, res) => {
           pageSize: data.limit
         }
       });
+      // console.log('-----res');
+      // console.log(res);
+  
+      logger.info(    logger_util.formart_response(res,{code: MESSAGE_CODE.SUCCESS}) )
     })
     .catch(err => {
-      res.send({
+      let obj={
         code: MESSAGE_CODE.ERROR_SERVER_WRONG,
         message: err.message || "服务器处理失败."
-      });
+      }
+      res.send(obj);
+      logger.info(    logger_util.formart_response(res,obj) )
     });
 };
 
