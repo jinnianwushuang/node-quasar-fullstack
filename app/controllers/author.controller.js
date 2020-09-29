@@ -66,9 +66,7 @@ exports.create = (req, res) => {
 // Retrieve all Authors from the database.
 exports.findAll = (req, res) => {
 
-  logger.info(logger_util.formart_request(req))
-  
-  // console.log(req)
+
 
   const { page, size, name } = req.query;
   var condition = name
@@ -92,8 +90,7 @@ exports.findAll = (req, res) => {
       });
       // console.log('-----res');
       // console.log(res);
-  
-      logger.info(    logger_util.formart_response(res,{code: MESSAGE_CODE.SUCCESS}) )
+
     })
     .catch(err => {
       let obj={
@@ -101,7 +98,7 @@ exports.findAll = (req, res) => {
         message: err.message || "服务器处理失败."
       }
       res.send(obj);
-      logger.info(    logger_util.formart_response(res,obj) )
+ 
     });
 };
 

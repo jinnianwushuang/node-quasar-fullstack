@@ -13,6 +13,7 @@ const getPagination = (page, size) => {
 
   return { limit, offset };
 };
+const logger=  require("log4js").getLogger()
 
 // Create and Save a new Tutorial
 exports.create = (req, res) => {
@@ -20,7 +21,7 @@ exports.create = (req, res) => {
   // console.log("------jinnnian----");
   // console.log(req.body);
   if (!req.body.title) {
-    res.send({
+    res. send({
       code: MESSAGE_CODE.ERROR_PARAMETER_WRONG,
       message: "参数非法!"
     });
@@ -63,9 +64,10 @@ exports.findAll = (req, res) => {
 
   Tutorial.paginate(condition, { offset, limit })
     .then(data => {
+     
       res.send({
         code: MESSAGE_CODE.SUCCESS,
-        message: "",
+        message: "1",
         data: {
           total: data.totalDocs,
           tutorials: data.docs,
@@ -75,6 +77,7 @@ exports.findAll = (req, res) => {
           // row_data:data
         }
       });
+      logger.info({res, code: MESSAGE_CODE.SUCCESS, message: "1"})
     })
     .catch(err => {
       res.send({

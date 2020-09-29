@@ -5,7 +5,7 @@
 -->
 <template>
   <q-layout view="lHh Lpr lFf">
-          <q-resize-observer @resize="on_window_resize" />
+    <q-resize-observer @resize="on_window_resize" />
     <q-header elevated>
       <q-toolbar>
         <q-btn
@@ -18,7 +18,7 @@
         />
 
         <q-toolbar-title>
-         node 全栈学习项目
+          node 全栈学习项目
         </q-toolbar-title>
 
         <div>加油</div>
@@ -33,13 +33,17 @@
       content-class="bg-grey-1"
     >
       <q-list>
-  
-              <q-item v-for="(item,index) in  menu_data"   :key="`menu_data_${index}`" 
-              @click="go_to_page(item)"
-               clickable v-ripple>
-        <q-item-section> {{item.title}} </q-item-section>
-      </q-item>
-
+        <q-item
+          v-for="(item, index) in menu_data"
+       
+          :class="item.name == $route.name?'bg-primary text-white':''"
+          :key="`menu_data_${index}`"
+          @click="go_to_page(item)"
+          clickable
+          v-ripple
+        >
+          <q-item-section> {{ item.title }} </q-item-section>
+        </q-item>
       </q-list>
     </q-drawer>
 
@@ -50,33 +54,32 @@
 </template>
 
 <script>
+import { mapActions } from "vuex";
 
-import { mapActions } from 'vuex';
-
-import menu_data from  "src/config/menu.js"
+import menu_data from "src/config/menu.js";
 export default {
-  name: 'MainLayout',
-  data () {
+  name: "MainLayout",
+  data() {
     return {
       leftDrawerOpen: false,
-     menu_data
-    }
+      menu_data
+    };
   },
   methods: {
-        ...mapActions([
-      'set_window_size', //also supports payload `this.nameOfAction(amount)` 
+    ...mapActions([
+      "set_window_size" //also supports payload `this.nameOfAction(amount)`
     ]),
     go_to_page(item) {
-       this.$router.push({
-         name:item.name
-       })
+      this.$router.push({
+        name: item.name
+      });
     },
-    on_window_resize(size){
-      console.log('----size  ---',size);
+    on_window_resize(size) {
+      console.log("----size  ---", size);
       // size.height= size.height<600?600:size.height
       // size.width =size.width<1200?1200:size.width
-      this.set_window_size(size)
+      this.set_window_size(size);
     }
-  },
-}
+  }
+};
 </script>

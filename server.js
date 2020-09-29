@@ -8,6 +8,7 @@ const bodyParser = require("body-parser");
 const cors = require("cors");
 const app = express();
 
+const logger_formart= require("./app/util/logger.util.js")
 var corsOptions = {
   // origin: "http://localhost:8081"
   function (origin, callback) {
@@ -24,11 +25,26 @@ var corsOptions = {
 
 // appenders  输出源配置  categories  输出类别  
 const log4js = require("log4js");
+log4js.addLayout('myjson', function(config) {
+ 
+  return function(logEvent) { 
+    // console.log(logEvent);
 
+    return logger_formart(logEvent,config)
+
+  }
+});
 log4js.configure({
   appenders: {
-    everything: { type: 'dateFile', filename: './log/category_default.log' },
-    console_debug: { type: 'dateFile', filename: './log/category_console.log' },
+    everything: { type: 'dateFile', filename: './log/server.log' ,layout:{
+      type:'myjson',
+      separator:","
+    }},
+    console_debug: { type: 'dateFile', filename: './log/server.log' ,layout:{
+      type:'myjson',
+      separator:","
+    }},
+
 
   },
   categories: {
@@ -43,7 +59,7 @@ const logger = log4js.getLogger()
 // 级别 > INFO 的日志才会被打印
 logger.level = "debug"
 // 日志的级别是 WARN 
-app.use( log4js.connectLogger(logger, {level: 'debug'}) );
+// app.use( log4js.connectLogger(logger, {level: 'debug'}) );
 // logger.info('sssssssssssssss------' )
 
 
@@ -69,6 +85,13 @@ db.mongoose
     process.exit();
   });
 
+
+  app.all('*',function(res,req,next){
+    logger.info(req)
+    // logger.info(res)
+   next() 
+
+  })
 // simple route
 app.get("/", (req, res) => {
   res.json({ message: "Welcome to jinnian application." });
