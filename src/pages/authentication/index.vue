@@ -1,6 +1,6 @@
 <!--
  * @Date           : 2020-09-13 00:45:57
- * @FilePath       : /node-quasar-fullstack/src/pages/tutorials/index.vue
+ * @FilePath       : /node-quasar-fullstack/src/pages/authentication/index.vue
  * @Description    : 
 -->
 <template>
@@ -9,7 +9,7 @@
     <div class="q-gutter-x-md q-mt-md">
       <q-btn color="primary" label="新增数据" @click="handle_click_add" />
       <q-btn color="primary" label="刷新数据" @click="handle_click_refresh" />
-      <q-btn color="primary" label="模拟数据" @click="handle_click_mock_data" />
+ 
       <q-btn color="red" label="一键删除" @click="handle_click_delete_all" />
     </div>
     <!-- 表格区域 -->
@@ -57,13 +57,9 @@
         </q-card-section>
 
         <q-card-section class="q-pt-none">
-     <q-input outlined v-model="editing_obj.title" label="标题" />    
-         <div class="q-gutter-sm q-my-md">
-      <q-radio v-model="editing_obj.published" val="true" label="已发布" />
-      <q-radio v-model="editing_obj.published" val="false" label="未发布" />
-
-    </div> 
-     <q-input outlined v-model="editing_obj.description" label="描述" />     
+     <q-input outlined v-model="editing_obj.name" label="标题" />    
+     
+     <q-input outlined v-model="editing_obj.module" label="模块" />     
 
         </q-card-section>
         <q-card-actions align="right">
@@ -83,8 +79,8 @@
 <script>
 import { mapGetters } from 'vuex';
 
-import { columns } from "src/pages/tutorials/config/index.js";
-import { api_tutorials } from "src/api/index.js";
+import { columns } from "src/pages/authentication/config/index.js";
+import { api_authentication } from "src/api/index.js";
 import myPagination from "src/components/pagination/pagination1.vue";
 export default {
   components: {
@@ -106,9 +102,12 @@ export default {
         rowsPerPage: 20
       },
       editing_obj_template: {
-        description: "",
-        published: true,
-        title: "全栈 学习"
+         name: '',
+        module:'',
+        api_method: '',
+        api_path: '',
+        effective: false,
+        description: '',
       },
       editing_obj: {}
     };
@@ -142,12 +141,12 @@ export default {
         page: this.pagination.currentPage,
         size: this.pagination.pageSize
       };
-      console.log("api_tutorials", api_tutorials);
-      api_tutorials.get_tutorials_findAll(params).then(res => {
+      console.log("api_authentication", api_authentication);
+      api_authentication.get_authentication_findAll(params).then(res => {
         console.log("----调用接口返回数据");
         console.log(res.data.data);
         let data= this.$lodash.get(res,'data.data')
-        this.data = data.tutorials;
+        this.data = data.data;
         this.total =data.total;
         this.$forceUpdate()
 
@@ -191,14 +190,14 @@ export default {
     // 删除
     handle_click_delete(item) {
       console.log("删除单个", item);
-      api_tutorials.delete_tutorials_by_id({ id: item.id }).then(res => {
+      api_authentication.delete_authentication_by_id({ id: item.id }).then(res => {
         this.init_table_data();
       });
     },
     // 一键删除
     handle_click_delete_all() {
       console.log("删除所有");
-      api_tutorials.delete_tutorials_all().then(res => {
+      api_authentication.delete_authentication_all().then(res => {
         this.init_table_data();
       });
     },
@@ -207,18 +206,7 @@ export default {
       console.log("刷新数据");
       this.init_table_data();
     },
-    // 批量新增模拟数据
-    handle_click_mock_data() {
-      console.log("批量新增模拟数据");
-      for (let i = 0; i < 500; i++) {
-        let obj = {
-          description: "学习稳如狗 " + i,
-          published: i % 2 == 0 ? true : false,
-          title: "全栈 学习" + i
-        };
-        this.handle_click_submit_add(obj);
-      }
-    },
+
     // 新增或者修改后提交服务器
     handle_click_submit() {
       console.log("新增或者修改后提交服务器");
@@ -234,7 +222,8 @@ export default {
     // 提交新增
     handle_click_submit_add(obj) {
       let params = obj || this.editing_obj;
-      api_tutorials.post_tutorials_create(params).then(res => {
+      params.effective=true
+      api_authentication.post_authentication_create(params).then(res => {
         if (!obj) {
           this.init_table_data();
         }
@@ -243,7 +232,8 @@ export default {
     //提交修改
     handle_click_submit_edit() {
       let params = obj || this.editing_obj;
-      api_tutorials.put_tutorials_by_id(params).then(res => {
+            params.effective=true
+      api_authentication.put_authentication_by_id(params).then(res => {
         this.init_table_data();
       });
     }

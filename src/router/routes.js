@@ -7,21 +7,34 @@
 const routes = [
   {
     path: "/",
-    redirect: { name: "tutorials" },
+    redirect: { name: "tutorial" },
     component: () => import("layouts/MainLayout.vue"),
     children: [
       {
-        path: "tutorials",
-        name: "tutorials",
+        path: "tutorial",
+        name: "tutorial",
 
-        component: () => import("src/pages/tutorials/index.vue")
+        component: () => import("src/pages/tutorial/index.vue")
       },
       {
-        path: "authors",
-        name: "authors",
+        path: "user",
+        name: "user",
 
-        component: () => import("src/pages/authors/index.vue")
+        component: () => import("src/pages/user/index.vue")
+      },
+      {
+        path: "authentication",
+        name: "authentication",
+
+        component: () => import("src/pages/authentication/index.vue")
+      },
+      {
+        path: "author",
+        name: "author",
+
+        component: () => import("src/pages/author/index.vue")
       }
+
     ]
   },
 

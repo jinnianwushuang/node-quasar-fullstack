@@ -5,8 +5,8 @@
  */
 
 module.exports = (logEvent,config)=>{
-  console.log('logEvent.data ');
-  console.log(logEvent.data);
+  // console.log('logEvent.data ');
+  // console.log(logEvent.data);
   let { req,res,code,message,prefix}=logEvent.data[0]
   let log_data_obj={}
   if(req){

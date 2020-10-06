@@ -1,9 +1,9 @@
 [
   {
     "type": "delete",
-    "url": "/api/authors",
+    "url": "/api/author",
     "title": "删除所有作者",
-    "group": "作者模块--_authors",
+    "group": "作者模块--_author",
     "success": {
       "fields": {
         "Success 200": [
@@ -12,21 +12,21 @@
             "type": "Object",
             "optional": false,
             "field": "all",
-            "description": "<p>详细字段说明看 /api/authors/fieldDescription</p>"
+            "description": "<p>详细字段说明看 /api/author/fieldDescription</p>"
           }
         ]
       }
     },
     "version": "0.0.0",
     "filename": "app/routes/modules/author.routes.js",
-    "groupTitle": "作者模块--_authors",
-    "name": "DeleteApiAuthors"
+    "groupTitle": "作者模块--_author",
+    "name": "DeleteApiAuthor"
   },
   {
     "type": "delete",
-    "url": "/api/authors/:id",
+    "url": "/api/author/:id",
     "title": "删除单个作者",
-    "group": "作者模块--_authors",
+    "group": "作者模块--_author",
     "success": {
       "fields": {
         "Success 200": [
@@ -35,21 +35,21 @@
             "type": "Object",
             "optional": false,
             "field": "all",
-            "description": "<p>详细字段说明看 /api/authors/fieldDescription</p>"
+            "description": "<p>详细字段说明看 /api/author/fieldDescription</p>"
           }
         ]
       }
     },
     "version": "0.0.0",
     "filename": "app/routes/modules/author.routes.js",
-    "groupTitle": "作者模块--_authors",
-    "name": "DeleteApiAuthorsId"
+    "groupTitle": "作者模块--_author",
+    "name": "DeleteApiAuthorId"
   },
   {
     "type": "get",
-    "url": "/api/authors",
+    "url": "/api/author",
     "title": "查询所有作者",
-    "group": "作者模块--_authors",
+    "group": "作者模块--_author",
     "success": {
       "fields": {
         "Success 200": [
@@ -58,21 +58,21 @@
             "type": "Object",
             "optional": false,
             "field": "all",
-            "description": "<p>详细字段说明看 /api/authors/fieldDescription</p>"
+            "description": "<p>详细字段说明看 /api/author/fieldDescription</p>"
           }
         ]
       }
     },
     "version": "0.0.0",
     "filename": "app/routes/modules/author.routes.js",
-    "groupTitle": "作者模块--_authors",
-    "name": "GetApiAuthors"
+    "groupTitle": "作者模块--_author",
+    "name": "GetApiAuthor"
   },
   {
     "type": "get",
-    "url": "/api/authors/fieldDescription",
+    "url": "/api/author/fieldDescription",
     "title": "返回作者表字段信息说明",
-    "group": "作者模块--_authors",
+    "group": "作者模块--_author",
     "success": {
       "fields": {
         "Success 200": [
@@ -81,21 +81,21 @@
             "type": "Object",
             "optional": false,
             "field": "all",
-            "description": "<p>详细字段说明看 /api/authors/fieldDescription</p>"
+            "description": "<p>详细字段说明看 /api/author/fieldDescription</p>"
           }
         ]
       }
     },
     "version": "0.0.0",
     "filename": "app/routes/modules/author.routes.js",
-    "groupTitle": "作者模块--_authors",
-    "name": "GetApiAuthorsFielddescription"
+    "groupTitle": "作者模块--_author",
+    "name": "GetApiAuthorFielddescription"
   },
   {
     "type": "get",
-    "url": "/api/authors/findAllBySex",
+    "url": "/api/author/findAllBySex",
     "title": "通过性别查询",
-    "group": "作者模块--_authors",
+    "group": "作者模块--_author",
     "success": {
       "fields": {
         "Success 200": [
@@ -104,21 +104,21 @@
             "type": "Object",
             "optional": false,
             "field": "all",
-            "description": "<p>详细字段说明看 /api/authors/fieldDescription</p>"
+            "description": "<p>详细字段说明看 /api/author/fieldDescription</p>"
           }
         ]
       }
     },
     "version": "0.0.0",
     "filename": "app/routes/modules/author.routes.js",
-    "groupTitle": "作者模块--_authors",
-    "name": "GetApiAuthorsFindallbysex"
+    "groupTitle": "作者模块--_author",
+    "name": "GetApiAuthorFindallbysex"
   },
   {
     "type": "get",
-    "url": "/api/authors/:id",
+    "url": "/api/author/:id",
     "title": "查询单个作者",
-    "group": "作者模块--_authors",
+    "group": "作者模块--_author",
     "success": {
       "fields": {
         "Success 200": [
@@ -127,21 +127,21 @@
             "type": "Object",
             "optional": false,
             "field": "all",
-            "description": "<p>详细字段说明看 /api/authors/fieldDescription</p>"
+            "description": "<p>详细字段说明看 /api/author/fieldDescription</p>"
           }
         ]
       }
     },
     "version": "0.0.0",
     "filename": "app/routes/modules/author.routes.js",
-    "groupTitle": "作者模块--_authors",
-    "name": "GetApiAuthorsId"
+    "groupTitle": "作者模块--_author",
+    "name": "GetApiAuthorId"
   },
   {
     "type": "post",
-    "url": "/api/authors",
+    "url": "/api/author",
     "title": "创建一个作者",
-    "group": "作者模块--_authors",
+    "group": "作者模块--_author",
     "success": {
       "fields": {
         "Success 200": [
@@ -150,21 +150,21 @@
             "type": "Object",
             "optional": false,
             "field": "all",
-            "description": "<p>详细字段说明看 /api/authors/fieldDescription</p>"
+            "description": "<p>详细字段说明看 /api/author/fieldDescription</p>"
           }
         ]
       }
     },
     "version": "0.0.0",
     "filename": "app/routes/modules/author.routes.js",
-    "groupTitle": "作者模块--_authors",
-    "name": "PostApiAuthors"
+    "groupTitle": "作者模块--_author",
+    "name": "PostApiAuthor"
   },
   {
     "type": "put",
-    "url": "/api/authors/:id",
+    "url": "/api/author/:id",
     "title": "修改单个作者",
-    "group": "作者模块--_authors",
+    "group": "作者模块--_author",
     "success": {
       "fields": {
         "Success 200": [
@@ -173,21 +173,21 @@
             "type": "Object",
             "optional": false,
             "field": "all",
-            "description": "<p>详细字段说明看 /api/authors/fieldDescription</p>"
+            "description": "<p>详细字段说明看 /api/author/fieldDescription</p>"
           }
         ]
       }
     },
     "version": "0.0.0",
     "filename": "app/routes/modules/author.routes.js",
-    "groupTitle": "作者模块--_authors",
-    "name": "PutApiAuthorsId"
+    "groupTitle": "作者模块--_author",
+    "name": "PutApiAuthorId"
   },
   {
     "type": "delete",
-    "url": "/api/tutorials",
+    "url": "/api/tutorial",
     "title": "删除所有教程",
-    "group": "教程模块--_authors",
+    "group": "教程模块--_tutorial",
     "success": {
       "fields": {
         "Success 200": [
@@ -196,21 +196,21 @@
             "type": "Object",
             "optional": false,
             "field": "all",
-            "description": "<p>详细字段说明看 /api/tutorials/fieldDescription</p>"
+            "description": "<p>详细字段说明看 /api/tutorial/fieldDescription</p>"
           }
         ]
       }
     },
     "version": "0.0.0",
     "filename": "app/routes/modules/turorial.routes.js",
-    "groupTitle": "教程模块--_authors",
-    "name": "DeleteApiTutorials"
+    "groupTitle": "教程模块--_tutorial",
+    "name": "DeleteApiTutorial"
   },
   {
     "type": "delete",
-    "url": "/api/tutorials/:id",
+    "url": "/api/tutorial/:id",
     "title": "删除单个教程",
-    "group": "教程模块--_authors",
+    "group": "教程模块--_tutorial",
     "success": {
       "fields": {
         "Success 200": [
@@ -219,21 +219,21 @@
             "type": "Object",
             "optional": false,
             "field": "all",
-            "description": "<p>详细字段说明看 /api/tutorials/fieldDescription</p>"
+            "description": "<p>详细字段说明看 /api/tutorial/fieldDescription</p>"
           }
         ]
       }
     },
     "version": "0.0.0",
     "filename": "app/routes/modules/turorial.routes.js",
-    "groupTitle": "教程模块--_authors",
-    "name": "DeleteApiTutorialsId"
+    "groupTitle": "教程模块--_tutorial",
+    "name": "DeleteApiTutorialId"
   },
   {
     "type": "get",
-    "url": "/api/tutorials",
+    "url": "/api/tutorial",
     "title": "查询所有教程",
-    "group": "教程模块--_authors",
+    "group": "教程模块--_tutorial",
     "success": {
       "fields": {
         "Success 200": [
@@ -242,21 +242,21 @@
             "type": "Object",
             "optional": false,
             "field": "all",
-            "description": "<p>详细字段说明看 /api/tutorials/fieldDescription</p>"
+            "description": "<p>详细字段说明看 /api/tutorial/fieldDescription</p>"
           }
         ]
       }
     },
     "version": "0.0.0",
     "filename": "app/routes/modules/turorial.routes.js",
-    "groupTitle": "教程模块--_authors",
-    "name": "GetApiTutorials"
+    "groupTitle": "教程模块--_tutorial",
+    "name": "GetApiTutorial"
   },
   {
     "type": "get",
-    "url": "/api/tutorials/fieldDescription",
+    "url": "/api/tutorial/fieldDescription",
     "title": "返回教程表字段信息说明",
-    "group": "教程模块--_authors",
+    "group": "教程模块--_tutorial",
     "success": {
       "fields": {
         "Success 200": [
@@ -265,21 +265,21 @@
             "type": "Object",
             "optional": false,
             "field": "all",
-            "description": "<p>详细字段说明看 /api/tutorials/fieldDescription</p>"
+            "description": "<p>详细字段说明看 /api/tutorial/fieldDescription</p>"
           }
         ]
       }
     },
     "version": "0.0.0",
     "filename": "app/routes/modules/turorial.routes.js",
-    "groupTitle": "教程模块--_authors",
-    "name": "GetApiTutorialsFielddescription"
+    "groupTitle": "教程模块--_tutorial",
+    "name": "GetApiTutorialFielddescription"
   },
   {
     "type": "get",
-    "url": "/api/tutorials/:id",
+    "url": "/api/tutorial/:id",
     "title": "查询单个教程",
-    "group": "教程模块--_authors",
+    "group": "教程模块--_tutorial",
     "success": {
       "fields": {
         "Success 200": [
@@ -288,21 +288,21 @@
             "type": "Object",
             "optional": false,
             "field": "all",
-            "description": "<p>详细字段说明看 /api/tutorials/fieldDescription</p>"
+            "description": "<p>详细字段说明看 /api/tutorial/fieldDescription</p>"
           }
         ]
       }
     },
     "version": "0.0.0",
     "filename": "app/routes/modules/turorial.routes.js",
-    "groupTitle": "教程模块--_authors",
-    "name": "GetApiTutorialsId"
+    "groupTitle": "教程模块--_tutorial",
+    "name": "GetApiTutorialId"
   },
   {
     "type": "get",
-    "url": "/api/tutorials/published",
+    "url": "/api/tutorial/published",
     "title": "查询所有已发布教程",
-    "group": "教程模块--_authors",
+    "group": "教程模块--_tutorial",
     "success": {
       "fields": {
         "Success 200": [
@@ -311,21 +311,21 @@
             "type": "Object",
             "optional": false,
             "field": "all",
-            "description": "<p>详细字段说明看 /api/tutorials/fieldDescription</p>"
+            "description": "<p>详细字段说明看 /api/tutorial/fieldDescription</p>"
           }
         ]
       }
     },
     "version": "0.0.0",
     "filename": "app/routes/modules/turorial.routes.js",
-    "groupTitle": "教程模块--_authors",
-    "name": "GetApiTutorialsPublished"
+    "groupTitle": "教程模块--_tutorial",
+    "name": "GetApiTutorialPublished"
   },
   {
     "type": "post",
-    "url": "/api/tutorials",
+    "url": "/api/tutorial",
     "title": "创建一个教程",
-    "group": "教程模块--_authors",
+    "group": "教程模块--_tutorial",
     "success": {
       "fields": {
         "Success 200": [
@@ -334,21 +334,21 @@
             "type": "Object",
             "optional": false,
             "field": "all",
-            "description": "<p>详细字段说明看 /api/tutorials/fieldDescription</p>"
+            "description": "<p>详细字段说明看 /api/tutorial/fieldDescription</p>"
           }
         ]
       }
     },
     "version": "0.0.0",
     "filename": "app/routes/modules/turorial.routes.js",
-    "groupTitle": "教程模块--_authors",
-    "name": "PostApiTutorials"
+    "groupTitle": "教程模块--_tutorial",
+    "name": "PostApiTutorial"
   },
   {
     "type": "put",
-    "url": "/api/tutorials/:id",
+    "url": "/api/tutorial/:id",
     "title": "修改单个教程",
-    "group": "教程模块--_authors",
+    "group": "教程模块--_tutorial",
     "success": {
       "fields": {
         "Success 200": [
@@ -357,14 +357,382 @@
             "type": "Object",
             "optional": false,
             "field": "all",
-            "description": "<p>详细字段说明看 /api/tutorials/fieldDescription</p>"
+            "description": "<p>详细字段说明看 /api/tutorial/fieldDescription</p>"
           }
         ]
       }
     },
     "version": "0.0.0",
     "filename": "app/routes/modules/turorial.routes.js",
-    "groupTitle": "教程模块--_authors",
-    "name": "PutApiTutorialsId"
+    "groupTitle": "教程模块--_tutorial",
+    "name": "PutApiTutorialId"
+  },
+  {
+    "type": "delete",
+    "url": "/api/authentication",
+    "title": "删除所有权限",
+    "group": "权限模块--_authentication",
+    "success": {
+      "fields": {
+        "Success 200": [
+          {
+            "group": "Success 200",
+            "type": "Object",
+            "optional": false,
+            "field": "all",
+            "description": "<p>详细字段说明看 /api/authentication/fieldDescription</p>"
+          }
+        ]
+      }
+    },
+    "version": "0.0.0",
+    "filename": "app/routes/modules/authentication.routes.js",
+    "groupTitle": "权限模块--_authentication",
+    "name": "DeleteApiAuthentication"
+  },
+  {
+    "type": "delete",
+    "url": "/api/authentication/:id",
+    "title": "删除单个权限",
+    "group": "权限模块--_authentication",
+    "success": {
+      "fields": {
+        "Success 200": [
+          {
+            "group": "Success 200",
+            "type": "Object",
+            "optional": false,
+            "field": "all",
+            "description": "<p>详细字段说明看 /api/authentication/fieldDescription</p>"
+          }
+        ]
+      }
+    },
+    "version": "0.0.0",
+    "filename": "app/routes/modules/authentication.routes.js",
+    "groupTitle": "权限模块--_authentication",
+    "name": "DeleteApiAuthenticationId"
+  },
+  {
+    "type": "get",
+    "url": "/api/authentication",
+    "title": "查询所有权限",
+    "group": "权限模块--_authentication",
+    "success": {
+      "fields": {
+        "Success 200": [
+          {
+            "group": "Success 200",
+            "type": "Object",
+            "optional": false,
+            "field": "all",
+            "description": "<p>详细字段说明看 /api/authentication/fieldDescription</p>"
+          }
+        ]
+      }
+    },
+    "version": "0.0.0",
+    "filename": "app/routes/modules/authentication.routes.js",
+    "groupTitle": "权限模块--_authentication",
+    "name": "GetApiAuthentication"
+  },
+  {
+    "type": "get",
+    "url": "/api/authentication/fieldDescription",
+    "title": "返回权限表字段信息说明",
+    "group": "权限模块--_authentication",
+    "success": {
+      "fields": {
+        "Success 200": [
+          {
+            "group": "Success 200",
+            "type": "Object",
+            "optional": false,
+            "field": "all",
+            "description": "<p>详细字段说明看 /api/authentication/fieldDescription</p>"
+          }
+        ]
+      }
+    },
+    "version": "0.0.0",
+    "filename": "app/routes/modules/authentication.routes.js",
+    "groupTitle": "权限模块--_authentication",
+    "name": "GetApiAuthenticationFielddescription"
+  },
+  {
+    "type": "get",
+    "url": "/api/authentication/:id",
+    "title": "查询单个权限",
+    "group": "权限模块--_authentication",
+    "success": {
+      "fields": {
+        "Success 200": [
+          {
+            "group": "Success 200",
+            "type": "Object",
+            "optional": false,
+            "field": "all",
+            "description": "<p>详细字段说明看 /api/authentication/fieldDescription</p>"
+          }
+        ]
+      }
+    },
+    "version": "0.0.0",
+    "filename": "app/routes/modules/authentication.routes.js",
+    "groupTitle": "权限模块--_authentication",
+    "name": "GetApiAuthenticationId"
+  },
+  {
+    "type": "get",
+    "url": "/api/authentication/published",
+    "title": "查询所有已发布权限",
+    "group": "权限模块--_authentication",
+    "success": {
+      "fields": {
+        "Success 200": [
+          {
+            "group": "Success 200",
+            "type": "Object",
+            "optional": false,
+            "field": "all",
+            "description": "<p>详细字段说明看 /api/authentication/fieldDescription</p>"
+          }
+        ]
+      }
+    },
+    "version": "0.0.0",
+    "filename": "app/routes/modules/authentication.routes.js",
+    "groupTitle": "权限模块--_authentication",
+    "name": "GetApiAuthenticationPublished"
+  },
+  {
+    "type": "post",
+    "url": "/api/authentication",
+    "title": "创建一个权限",
+    "group": "权限模块--_authentication",
+    "success": {
+      "fields": {
+        "Success 200": [
+          {
+            "group": "Success 200",
+            "type": "Object",
+            "optional": false,
+            "field": "all",
+            "description": "<p>详细字段说明看 /api/authentication/fieldDescription</p>"
+          }
+        ]
+      }
+    },
+    "version": "0.0.0",
+    "filename": "app/routes/modules/authentication.routes.js",
+    "groupTitle": "权限模块--_authentication",
+    "name": "PostApiAuthentication"
+  },
+  {
+    "type": "put",
+    "url": "/api/authentication/:id",
+    "title": "修改单个权限",
+    "group": "权限模块--_authentication",
+    "success": {
+      "fields": {
+        "Success 200": [
+          {
+            "group": "Success 200",
+            "type": "Object",
+            "optional": false,
+            "field": "all",
+            "description": "<p>详细字段说明看 /api/authentication/fieldDescription</p>"
+          }
+        ]
+      }
+    },
+    "version": "0.0.0",
+    "filename": "app/routes/modules/authentication.routes.js",
+    "groupTitle": "权限模块--_authentication",
+    "name": "PutApiAuthenticationId"
+  },
+  {
+    "type": "delete",
+    "url": "/api/user",
+    "title": "删除所有用户",
+    "group": "用户模块--_user",
+    "success": {
+      "fields": {
+        "Success 200": [
+          {
+            "group": "Success 200",
+            "type": "Object",
+            "optional": false,
+            "field": "all",
+            "description": "<p>详细字段说明看 /api/user/fieldDescription</p>"
+          }
+        ]
+      }
+    },
+    "version": "0.0.0",
+    "filename": "app/routes/modules/user.routes.js",
+    "groupTitle": "用户模块--_user",
+    "name": "DeleteApiUser"
+  },
+  {
+    "type": "delete",
+    "url": "/api/user/:id",
+    "title": "删除单个用户",
+    "group": "用户模块--_user",
+    "success": {
+      "fields": {
+        "Success 200": [
+          {
+            "group": "Success 200",
+            "type": "Object",
+            "optional": false,
+            "field": "all",
+            "description": "<p>详细字段说明看 /api/user/fieldDescription</p>"
+          }
+        ]
+      }
+    },
+    "version": "0.0.0",
+    "filename": "app/routes/modules/user.routes.js",
+    "groupTitle": "用户模块--_user",
+    "name": "DeleteApiUserId"
+  },
+  {
+    "type": "get",
+    "url": "/api/user",
+    "title": "查询所有用户",
+    "group": "用户模块--_user",
+    "success": {
+      "fields": {
+        "Success 200": [
+          {
+            "group": "Success 200",
+            "type": "Object",
+            "optional": false,
+            "field": "all",
+            "description": "<p>详细字段说明看 /api/user/fieldDescription</p>"
+          }
+        ]
+      }
+    },
+    "version": "0.0.0",
+    "filename": "app/routes/modules/user.routes.js",
+    "groupTitle": "用户模块--_user",
+    "name": "GetApiUser"
+  },
+  {
+    "type": "get",
+    "url": "/api/user/fieldDescription",
+    "title": "返回用户表字段信息说明",
+    "group": "用户模块--_user",
+    "success": {
+      "fields": {
+        "Success 200": [
+          {
+            "group": "Success 200",
+            "type": "Object",
+            "optional": false,
+            "field": "all",
+            "description": "<p>详细字段说明看 /api/user/fieldDescription</p>"
+          }
+        ]
+      }
+    },
+    "version": "0.0.0",
+    "filename": "app/routes/modules/user.routes.js",
+    "groupTitle": "用户模块--_user",
+    "name": "GetApiUserFielddescription"
+  },
+  {
+    "type": "get",
+    "url": "/api/user/:id",
+    "title": "查询单个用户",
+    "group": "用户模块--_user",
+    "success": {
+      "fields": {
+        "Success 200": [
+          {
+            "group": "Success 200",
+            "type": "Object",
+            "optional": false,
+            "field": "all",
+            "description": "<p>详细字段说明看 /api/user/fieldDescription</p>"
+          }
+        ]
+      }
+    },
+    "version": "0.0.0",
+    "filename": "app/routes/modules/user.routes.js",
+    "groupTitle": "用户模块--_user",
+    "name": "GetApiUserId"
+  },
+  {
+    "type": "get",
+    "url": "/api/user/published",
+    "title": "查询所有已发布用户",
+    "group": "用户模块--_user",
+    "success": {
+      "fields": {
+        "Success 200": [
+          {
+            "group": "Success 200",
+            "type": "Object",
+            "optional": false,
+            "field": "all",
+            "description": "<p>详细字段说明看 /api/user/fieldDescription</p>"
+          }
+        ]
+      }
+    },
+    "version": "0.0.0",
+    "filename": "app/routes/modules/user.routes.js",
+    "groupTitle": "用户模块--_user",
+    "name": "GetApiUserPublished"
+  },
+  {
+    "type": "post",
+    "url": "/api/user",
+    "title": "创建一个用户",
+    "group": "用户模块--_user",
+    "success": {
+      "fields": {
+        "Success 200": [
+          {
+            "group": "Success 200",
+            "type": "Object",
+            "optional": false,
+            "field": "all",
+            "description": "<p>详细字段说明看 /api/user/fieldDescription</p>"
+          }
+        ]
+      }
+    },
+    "version": "0.0.0",
+    "filename": "app/routes/modules/user.routes.js",
+    "groupTitle": "用户模块--_user",
+    "name": "PostApiUser"
+  },
+  {
+    "type": "put",
+    "url": "/api/user/:id",
+    "title": "修改单个用户",
+    "group": "用户模块--_user",
+    "success": {
+      "fields": {
+        "Success 200": [
+          {
+            "group": "Success 200",
+            "type": "Object",
+            "optional": false,
+            "field": "all",
+            "description": "<p>详细字段说明看 /api/user/fieldDescription</p>"
+          }
+        ]
+      }
+    },
+    "version": "0.0.0",
+    "filename": "app/routes/modules/user.routes.js",
+    "groupTitle": "用户模块--_user",
+    "name": "PutApiUserId"
   }
 ]

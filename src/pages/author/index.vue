@@ -1,6 +1,6 @@
 <!--
  * @Date           : 2020-09-13 00:45:57
- * @FilePath       : /node-quasar-fullstack/src/pages/authors/index.vue
+ * @FilePath       : /node-quasar-fullstack/src/pages/author/index.vue
  * @Description    : 
 -->
 <template>
@@ -76,8 +76,8 @@
 <script>
 import { mapGetters } from 'vuex';
 
-import { columns } from "src/pages/authors/config/index.js";
-import { api_authors } from "src/api/index.js";
+import { columns } from "src/pages/author/config/index.js";
+import { api_author } from "src/api/index.js";
 import myPagination from "src/components/pagination/pagination1.vue";
 export default {
   components: {
@@ -142,12 +142,12 @@ export default {
         page: this.pagination.currentPage,
         size: this.pagination.pageSize
       };
-      console.log("api_authors", api_authors);
-      api_authors.get_authors_findAll(params).then(res => {
+      console.log("api_author", api_author);
+      api_author.get_author_findAll(params).then(res => {
         console.log("----调用接口返回数据");
         console.log(res.data.data);
         let data= this.$lodash.get(res,'data.data')
-        this.data = data.authors;
+        this.data = data.data;
         this.total =data.total;
         this.$forceUpdate()
 
@@ -191,14 +191,14 @@ export default {
     // 删除
     handle_click_delete(item) {
       console.log("删除单个", item);
-      api_authors.delete_authors_by_id({ id: item.id }).then(res => {
+      api_author.delete_author_by_id({ id: item.id }).then(res => {
         this.init_table_data();
       });
     },
     // 一键删除
     handle_click_delete_all() {
       console.log("删除所有");
-      api_authors.delete_authors_all().then(res => {
+      api_author.delete_author_all().then(res => {
         this.init_table_data();
       });
     },
@@ -210,7 +210,7 @@ export default {
     // 批量新增模拟数据
     handle_click_mock_data() {
       console.log("批量新增模拟数据");
-      for (let i = 0; i < 500; i++) {
+      for (let i = 0; i < 20; i++) {
         let obj = {
           description: "学习稳如狗 " + i,
          
@@ -242,7 +242,7 @@ export default {
     // 提交新增
     handle_click_submit_add(obj) {
       let params = obj || this.editing_obj;
-      api_authors.post_authors_create(params).then(res => {
+      api_author.post_author_create(params).then(res => {
         if (!obj) {
           this.init_table_data();
         }
@@ -251,7 +251,7 @@ export default {
     //提交修改
     handle_click_submit_edit() {
       let params = obj || this.editing_obj;
-      api_authors.put_authors_by_id(params).then(res => {
+      api_author.put_author_by_id(params).then(res => {
         this.init_table_data();
       });
     }

@@ -4,7 +4,7 @@
  * @Description    :
  */
 const db = require("../models");
-const Tutorial = db.tutorials;
+const Tutorial = db.tutorial;
 const Tutorial_description = require("../description/tutorial.description");
 const MESSAGE_CODE = require("../config/code.config");
 const getPagination = (page, size) => {
@@ -70,7 +70,7 @@ exports.findAll = (req, res) => {
         message: "1",
         data: {
           total: data.totalDocs,
-          tutorials: data.docs,
+          data: data.docs,
           // totalPages: data.totalPages,
           currentPage: data.page,
           pageSize: data.limit
@@ -201,7 +201,7 @@ exports.findAllPublished = (req, res) => {
         message: "",
         date: {
           total: data.totalDocs,
-          tutorials: data.docs,
+          data: data.docs,
           // totalPages: data.totalPages,
           currentPage: data.page,
           pageSize: data.limit

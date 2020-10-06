@@ -13,7 +13,9 @@ mongoose.Promise = global.Promise;
 const db = {};
 db.mongoose = mongoose;
 db.url = dbConfig.url;
-db.tutorials = require("./modules/tutorial.model.js")(mongoose, mongoosePaginate);
-db.authors = require("./modules/author.model.js")(mongoose, mongoosePaginate);
+db.tutorial = require("./modules/tutorial.model.js")(mongoose, mongoosePaginate);
+db.author = require("./modules/author.model.js")(mongoose, mongoosePaginate);
+db.authentication = require("./modules/authentication.model.js")(mongoose, mongoosePaginate);
+db.user = require("./modules/user.model.js")(mongoose, mongoosePaginate);
 
 module.exports = db;

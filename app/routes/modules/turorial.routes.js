@@ -4,82 +4,82 @@
  * @Description    : 
  */
 module.exports = app => {
-  const tutorials = require("../../controllers/tutorial.controller.js");
+  const tutorial = require("../../controllers/tutorial.controller.js");
 
   var router = require("express").Router();
 
   // Create a new Tutorial
   /**
- * @api {post} /api/tutorials  创建一个教程
- *@apiGroup 教程模块-- authors
+ * @api {post} /api/tutorial  创建一个教程
+ *@apiGroup 教程模块-- tutorial
  *
- * @apiSuccess {Object} all 详细字段说明看 /api/tutorials/fieldDescription
+ * @apiSuccess {Object} all 详细字段说明看 /api/tutorial/fieldDescription
  */
-  router.post("/", tutorials.create);
+  router.post("/", tutorial.create);
 
-  // Retrieve all Tutorials
+  // Retrieve all tutorial
     /**
- * @api {get} /api/tutorials  查询所有教程
- *@apiGroup 教程模块-- authors
+ * @api {get} /api/tutorial  查询所有教程
+ *@apiGroup 教程模块-- tutorial
  *
- * @apiSuccess {Object} all 详细字段说明看 /api/tutorials/fieldDescription
+ * @apiSuccess {Object} all 详细字段说明看 /api/tutorial/fieldDescription
  */
-  router.get("/", tutorials.findAll);
+  router.get("/", tutorial.findAll);
 
-  // Retrieve all published Tutorials
+  // Retrieve all published tutorial
     /**
- * @api {get} /api/tutorials/published  查询所有已发布教程
- *@apiGroup 教程模块-- authors
+ * @api {get} /api/tutorial/published  查询所有已发布教程
+ *@apiGroup 教程模块-- tutorial
  *
- * @apiSuccess {Object} all 详细字段说明看 /api/tutorials/fieldDescription
+ * @apiSuccess {Object} all 详细字段说明看 /api/tutorial/fieldDescription
  */  
-  router.get("/published", tutorials.findAllPublished);
+  router.get("/published", tutorial.findAllPublished);
 
 // 返回 字段信息说明
     /**
- * @api {get} /api/tutorials/fieldDescription  返回教程表字段信息说明
- *@apiGroup 教程模块-- authors
+ * @api {get} /api/tutorial/fieldDescription  返回教程表字段信息说明
+ *@apiGroup 教程模块-- tutorial
  *
- * @apiSuccess {Object} all 详细字段说明看 /api/tutorials/fieldDescription
+ * @apiSuccess {Object} all 详细字段说明看 /api/tutorial/fieldDescription
  */  
-router.get("/fieldDescription",tutorials.fieldDescription)
+router.get("/fieldDescription",tutorial.fieldDescription)
 
   // Retrieve a single Tutorial with id
     /**
- * @api {get} /api/tutorials/:id  查询单个教程
- *@apiGroup 教程模块-- authors
+ * @api {get} /api/tutorial/:id  查询单个教程
+ *@apiGroup 教程模块-- tutorial
  *
- * @apiSuccess {Object} all 详细字段说明看 /api/tutorials/fieldDescription
+ * @apiSuccess {Object} all 详细字段说明看 /api/tutorial/fieldDescription
  */    
-  router.get("/:id", tutorials.findOne);
+  router.get("/:id", tutorial.findOne);
 
   // Update a Tutorial with id
       /**
- * @api {put} /api/tutorials/:id  修改单个教程
- *@apiGroup 教程模块-- authors
+ * @api {put} /api/tutorial/:id  修改单个教程
+ *@apiGroup 教程模块-- tutorial
  *
- * @apiSuccess {Object} all 详细字段说明看 /api/tutorials/fieldDescription
+ * @apiSuccess {Object} all 详细字段说明看 /api/tutorial/fieldDescription
  */  
-  router.put("/:id", tutorials.update);
+  router.put("/:id", tutorial.update);
 
   // Delete a Tutorial with id
       /**
- * @api {delete} /api/tutorials/:id  删除单个教程
- *@apiGroup 教程模块-- authors
+ * @api {delete} /api/tutorial/:id  删除单个教程
+ *@apiGroup 教程模块-- tutorial
  *
- * @apiSuccess {Object} all 详细字段说明看 /api/tutorials/fieldDescription
+ * @apiSuccess {Object} all 详细字段说明看 /api/tutorial/fieldDescription
  */  
-  router.delete("/:id", tutorials.delete);
+  router.delete("/:id", tutorial.delete);
 
   // Create a new Tutorial
       /**
- * @api {delete} /api/tutorials  删除所有教程
- *@apiGroup 教程模块-- authors
+ * @api {delete} /api/tutorial  删除所有教程
+ *@apiGroup 教程模块-- tutorial
  *
- * @apiSuccess {Object} all 详细字段说明看 /api/tutorials/fieldDescription
+ * @apiSuccess {Object} all 详细字段说明看 /api/tutorial/fieldDescription
  */  
-  router.delete("/", tutorials.deleteAll);
+  router.delete("/", tutorial.deleteAll);
 
 
-  app.use("/api/tutorials", router);
+  app.use("/api/tutorial", router);
 };

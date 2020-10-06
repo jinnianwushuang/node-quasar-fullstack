@@ -6,5 +6,9 @@
 module.exports= app=>{
     require("./modules/turorial.routes")(app);
     require("./modules/author.routes")(app);
+    require("./modules/user.routes")(app);
+    require("./modules/authentication.routes")(app);
+
+
 
 }

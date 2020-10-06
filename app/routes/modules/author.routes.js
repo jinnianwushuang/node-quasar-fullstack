@@ -4,80 +4,80 @@
  * @Description    : 
  */
 module.exports = app => {
-  const authors = require("../../controllers/author.controller.js");
+  const author = require("../../controllers/author.controller.js");
 
   var router = require("express").Router();
 
   // Create a new Author
   /**
- * @api {post} /api/authors  创建一个作者
- * @apiGroup 作者模块-- authors
+ * @api {post} /api/author  创建一个作者
+ * @apiGroup 作者模块-- author
  *
- * @apiSuccess {Object} all 详细字段说明看 /api/authors/fieldDescription
+ * @apiSuccess {Object} all 详细字段说明看 /api/author/fieldDescription
  */
-  router.post("/", authors.create);
+  router.post("/", author.create);
 
-  // Retrieve all Authors
+  // Retrieve all author
     /**
- * @api {get} /api/authors  查询所有作者
- * @apiGroup 作者模块-- authors
+ * @api {get} /api/author  查询所有作者
+ * @apiGroup 作者模块-- author
  *
- * @apiSuccess {Object} all 详细字段说明看 /api/authors/fieldDescription
+ * @apiSuccess {Object} all 详细字段说明看 /api/author/fieldDescription
  */
-  router.get("/", authors.findAll);
+  router.get("/", author.findAll);
 
     /**
- * @api {get} /api/authors/findAllBySex  通过性别查询
- * @apiGroup 作者模块-- authors
+ * @api {get} /api/author/findAllBySex  通过性别查询
+ * @apiGroup 作者模块-- author
  *
- * @apiSuccess {Object} all 详细字段说明看 /api/authors/fieldDescription
+ * @apiSuccess {Object} all 详细字段说明看 /api/author/fieldDescription
  */  
 
-  router.get("/findAllBySex",authors.findAllBySex)
+  router.get("/findAllBySex",author.findAllBySex)
  // 返回 字段信息说明
     /**
- * @api {get} /api/authors/fieldDescription  返回作者表字段信息说明
- * @apiGroup 作者模块-- authors
+ * @api {get} /api/author/fieldDescription  返回作者表字段信息说明
+ * @apiGroup 作者模块-- author
  *
- * @apiSuccess {Object} all 详细字段说明看 /api/authors/fieldDescription
+ * @apiSuccess {Object} all 详细字段说明看 /api/author/fieldDescription
  */  
-router.get("/fieldDescription",authors.fieldDescription)
+router.get("/fieldDescription",author.fieldDescription)
 
   // Retrieve a single Author with id
     /**
- * @api {get} /api/authors/:id  查询单个作者
- * @apiGroup 作者模块-- authors
+ * @api {get} /api/author/:id  查询单个作者
+ * @apiGroup 作者模块-- author
  *
- * @apiSuccess {Object} all 详细字段说明看 /api/authors/fieldDescription
+ * @apiSuccess {Object} all 详细字段说明看 /api/author/fieldDescription
  */    
-  router.get("/:id", authors.findOne);
+  router.get("/:id", author.findOne);
 
   // Update a Author with id
       /**
- * @api {put} /api/authors/:id  修改单个作者
- * @apiGroup 作者模块-- authors
+ * @api {put} /api/author/:id  修改单个作者
+ * @apiGroup 作者模块-- author
  *
- * @apiSuccess {Object} all 详细字段说明看 /api/authors/fieldDescription
+ * @apiSuccess {Object} all 详细字段说明看 /api/author/fieldDescription
  */  
-  router.put("/:id", authors.update);
+  router.put("/:id", author.update);
 
   // Delete a Author with id
       /**
- * @api {delete} /api/authors/:id  删除单个作者
- * @apiGroup 作者模块-- authors
+ * @api {delete} /api/author/:id  删除单个作者
+ * @apiGroup 作者模块-- author
  *
- * @apiSuccess {Object} all 详细字段说明看 /api/authors/fieldDescription
+ * @apiSuccess {Object} all 详细字段说明看 /api/author/fieldDescription
  */  
-  router.delete("/:id", authors.delete);
+  router.delete("/:id", author.delete);
 
   // Create a new Author
       /**
- * @api {delete} /api/authors  删除所有作者
- * @apiGroup 作者模块-- authors
+ * @api {delete} /api/author  删除所有作者
+ * @apiGroup 作者模块-- author
  *
- * @apiSuccess {Object} all 详细字段说明看 /api/authors/fieldDescription
+ * @apiSuccess {Object} all 详细字段说明看 /api/author/fieldDescription
  */  
-  router.delete("/", authors.deleteAll);
+  router.delete("/", author.deleteAll);
 
-  app.use("/api/authors", router);
+  app.use("/api/author", router);
 };

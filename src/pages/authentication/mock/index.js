@@ -1,6 +1,6 @@
 /*
  * @Date           : 2020-09-13 01:00:30
- * @FilePath       : /node-quasar-fullstack/src/pages/tutorials/mock/index.js
+ * @FilePath       : /node-quasar-fullstack/src/pages/authentication/mock/index.js
  * @Description    :
  */
 

@@ -1,11 +1,11 @@
 /*
  * @Date           : 2020-09-09 23:56:34
- * @FilePath       : /node-quasar-fullstack/app/controllers/author.controller.js
+ * @FilePath       : /node-quasar-fullstack/app/controllers/user.controller.js
  * @Description    :
  */
 const db = require("../models");
-const Author = db.author;
-const Author_description = require("../description/author.description");
+const User = db.user;
+const User_description = require("../description/user.description");
 const MESSAGE_CODE = require("../config/code.config");
 const getPagination = (page, size) => {
   const limit = size ? +size : 20;
@@ -13,41 +13,33 @@ const getPagination = (page, size) => {
 
   return { limit, offset };
 };
+const logger=  require("log4js").getLogger()
 
-const logger =  require("log4js").getLogger('category_console')
-const logger_util =require("../util/logger.util.js");
-
-// Create and Save a new Author
+// Create and Save a new User
 exports.create = (req, res) => {
   // Validate request
   // console.log("------jinnnian----");
   // console.log(req.body);
-  if (!req.body.name) {
-    res.send({
+  if (!req.body.username) {
+    res. send({
       code: MESSAGE_CODE.ERROR_PARAMETER_WRONG,
-      message: "参数非法"
+      message: "参数非法!"
     });
-
     return;
   }
 
-  // Create a Author
-  const author = new Author({
-    name: req.body.name,
-    age: req.body.age || 18,
-    sex: req.body.sex,
-    married: req.body.married,
-    nationality: req.body.nationality || "中国",
-    address: req.body.address,
-    tel: req.body.tel,
-    hobby: req.body.hobby,
+  // Create a User
+  const user = new User({
+ 
+    username: req.body.username,
+    password: req.body.password,
     description: req.body.description,
-    remark: req.body.remark
+    authentication:req.body.authentication,
   });
 
-  // Save Author in the database
-  author
-    .save(author)
+  // Save User in the database
+  user
+    .save(user)
     .then(data => {
       res.send({
         code: MESSAGE_CODE.SUCCESS,
@@ -63,55 +55,50 @@ exports.create = (req, res) => {
     });
 };
 
-// Retrieve all Authors from the database.
+// Retrieve all user from the database.
 exports.findAll = (req, res) => {
-
-
-
-  const { page, size, name } = req.query;
-  var condition = name
-    ? { name: { $regex: new RegExp(name), $options: "i" } }
+  const { page, size, username } = req.query;
+  var condition = username
+    ? { username: { $regex: new RegExp(username), $options: "i" } }
     : {};
 
   const { limit, offset } = getPagination(page, size);
 
-  Author.paginate(condition, { offset, limit })
+  User.paginate(condition, { offset, limit })
     .then(data => {
+     
       res.send({
         code: MESSAGE_CODE.SUCCESS,
-        message: "",
+        message: "1",
         data: {
           total: data.totalDocs,
           data: data.docs,
           // totalPages: data.totalPages,
           currentPage: data.page,
           pageSize: data.limit
+          // row_data:data
         }
       });
-      // console.log('-----res');
-      // console.log(res);
-
+      logger.info({res, code: MESSAGE_CODE.SUCCESS, message: "1"})
     })
     .catch(err => {
-      let obj={
+      res.send({
         code: MESSAGE_CODE.ERROR_SERVER_WRONG,
         message: err.message || "服务器处理失败."
-      }
-      res.send(obj);
- 
+      });
     });
 };
 
-// Find a single Author with an id
+// Find a single User with an id
 exports.findOne = (req, res) => {
   const id = req.params.id;
 
-  Author.findById(id)
+  User.findById(id)
     .then(data => {
       if (!data)
         res.send({
           code: MESSAGE_CODE.ERROR_NOT_FOUND,
-          message: "不存在此数据 id " + id
+          message: "数据不存在 id " + id
         });
       else {
         res.send({
@@ -129,7 +116,7 @@ exports.findOne = (req, res) => {
     });
 };
 
-// Update a Author by the id in the request
+// Update a User by the id in the request
 exports.update = (req, res) => {
   if (!req.body) {
     return res.send({
@@ -140,19 +127,18 @@ exports.update = (req, res) => {
 
   const id = req.params.id;
 
-  Author.findByIdAndUpdate(id, req.body, { useFindAndModify: false })
+  User.findByIdAndUpdate(id, req.body, { useFindAndModify: false })
     .then(data => {
       if (!data) {
         res.send({
           code: MESSAGE_CODE.ERROR_NOT_FOUND,
-          message: `数据不存在 id=${id}. `
+          message: `数据不存在 id=${id} `
         });
-      } else {
+      } else
         res.send({
           code: MESSAGE_CODE.SUCCESS,
-          message: "数据处理成功"
+          message: ""
         });
-      }
     })
     .catch(err => {
       res.send({
@@ -162,21 +148,21 @@ exports.update = (req, res) => {
     });
 };
 
-// Delete a Author with the specified id in the request
+// Delete a User with the specified id in the request
 exports.delete = (req, res) => {
   const id = req.params.id;
 
-  Author.findByIdAndRemove(id, { useFindAndModify: false })
+  User.findByIdAndRemove(id, { useFindAndModify: false })
     .then(data => {
       if (!data) {
         res.send({
           code: MESSAGE_CODE.ERROR_NOT_FOUND,
-          message: `数据不存在 id=${id}.  `
+          message: `数据不存在 id=${id}.`
         });
       } else {
         res.send({
           code: MESSAGE_CODE.SUCCESS,
-          message: "数据处理成功!"
+          message: ""
         });
       }
     })
@@ -188,13 +174,13 @@ exports.delete = (req, res) => {
     });
 };
 
-// Delete all Authors from the database.
+// Delete all user from the database.
 exports.deleteAll = (req, res) => {
-  Author.deleteMany({})
+  User.deleteMany({})
     .then(data => {
       res.send({
         code: MESSAGE_CODE.SUCCESS,
-        message: `删除数据成功，数量： ${data.deletedCount} !`
+        message: `删除成功,数量：${data.deletedCount} `
       });
     })
     .catch(err => {
@@ -205,17 +191,17 @@ exports.deleteAll = (req, res) => {
     });
 };
 
-// Find all Authors  By sex
-exports.findAllBySex = (req, res) => {
+// Find all published user
+exports.findAllPublished = (req, res) => {
   const { page, size } = req.query;
   const { limit, offset } = getPagination(page, size);
 
-  Author.paginate({ sex: sex || 1 }, { offset, limit })
+  User.paginate({ published: true }, { offset, limit })
     .then(data => {
       res.send({
         code: MESSAGE_CODE.SUCCESS,
         message: "",
-        data: {
+        date: {
           total: data.totalDocs,
           data: data.docs,
           // totalPages: data.totalPages,
@@ -239,7 +225,7 @@ exports.fieldDescription = (req, res) => {
     code: MESSAGE_CODE.SUCCESS,
     message: "",
     data: {
-      description: Author_description.field_description
+      description: User_description.field_description
     }
   });
 };
