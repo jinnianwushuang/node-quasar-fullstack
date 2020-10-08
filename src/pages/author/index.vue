@@ -144,7 +144,7 @@ export default {
       };
       console.log("api_author", api_author);
       api_author.get_author_findAll(params).then(res => {
-        console.log("----调用接口返回数据");
+        console.log("-1111111111111111111---调用接口返回数据");
         console.log(res.data.data);
         let data= this.$lodash.get(res,'data.data')
         this.data = data.data;

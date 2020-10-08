@@ -10,24 +10,10 @@
 
 // Configuration for your app
 // https://quasar.dev/quasar-cli/quasar-conf-js
-function getIPAddress(){
-  var interfaces = require('os').networkInterfaces();
-  for(var devName in interfaces){
-      var iface = interfaces[devName];
-      for(var i=0;i<iface.length;i++){
-          var alias = iface[i];
-          if(alias.family === 'IPv4' && alias.address !== '127.0.0.1' && !alias.internal){
-              return alias.address;
-          }
-      }
-  }
-}
 
-
-// const LOCAL_IP = '192.168.0.36'
-//process.env.
-// set userhost=192.168.0.36 & serverport=19090 & webpageport=20000
-const API_DOMAIN =`http://${process.env.userhost.trim()}:${process.env.serverport.trim()}`
+const env_config =require('./env.js')
+console.log('前端页面项目收到的',env_config);
+const API_DOMAIN =`http://${env_config.userhost}:${env_config.serverport}`
 module.exports = function (/* ctx */) {
   return {
     // https://quasar.dev/quasar-cli/supporting-ts
@@ -99,9 +85,9 @@ module.exports = function (/* ctx */) {
 
     // Full list of options: https://quasar.dev/quasar-cli/quasar-conf-js#Property%3A-devServer
     devServer: {
-      host:process.env.userhost.trim(),
+      host:env_config.userhost,
       https: false,
-      port: process.env.webpageport.trim(),
+      port: env_config.webpageport,
       open: true, // opens browser window automatically
       proxy: {
         '/api/': {

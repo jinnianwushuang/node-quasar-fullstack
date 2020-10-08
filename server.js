@@ -7,6 +7,7 @@ const express = require("express");
 const bodyParser = require("body-parser");
 const cors = require("cors");
 const app = express();
+const env_config =require('./env.js')
 
 const logger_formart= require("./app/util/logger.util.js")
 var corsOptions = {
@@ -101,8 +102,8 @@ app.get("/", (req, res) => {
 require("./app/routes/index")(app)
 
 // set port, listen for requests
-const PORT = process.env.serverport.trim() ;
-const HOST = process.env.userhost.trim() ;
+const PORT =  env_config.serverport  ;
+const HOST = env_config.userhost  ;
 app.listen(PORT,HOST, () => {
   console.log(`Server is running on http://${HOST}:${PORT}`);
 });
