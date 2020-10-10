@@ -8,7 +8,7 @@ const bodyParser = require("body-parser");
 const cors = require("cors");
 const app = express();
 const env_config =require('./env.js')
-
+var colors = require('colors/safe');
 const logger_formart= require("./app/util/logger.util.js")
 var corsOptions = {
   // origin: "http://localhost:8081"
@@ -95,7 +95,18 @@ db.mongoose
   })
 // simple route
 app.get("/", (req, res) => {
-  res.json({ message: "Welcome to jinnian application." });
+  // res.json({ message: "Welcome to jinnian application." });
+
+  let str=`
+  <h1>欢迎来到錦年node全栈学习项目</h1>
+  <p>后台服务地址：<a href="${env_config.s_url}">${env_config.s_url}</a> </p>
+  <p>前端服务地址：<a href="${env_config.w_url}">${env_config.w_url}</a> </p>
+  <p>API文档地址：<a href="${env_config.a_url}">${env_config.a_url}</a> </p>
+  <p>有问题联系----jinnian </p>
+  <p></p>
+  `
+  
+  res.send(str)
 });
 
 // 注册所有路由
@@ -105,5 +116,5 @@ require("./app/routes/index")(app)
 const PORT =  env_config.serverport  ;
 const HOST = env_config.userhost  ;
 app.listen(PORT,HOST, () => {
-  console.log(`Server is running on http://${HOST}:${PORT}`);
+  console.log(colors.yellow(`Server is running on http://${HOST}:${PORT}`));
 });

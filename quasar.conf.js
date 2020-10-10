@@ -12,7 +12,7 @@
 // https://quasar.dev/quasar-cli/quasar-conf-js
 
 const env_config =require('./env.js')
-console.log('前端页面项目收到的',env_config);
+// console.log('前端页面项目收到的',env_config);
 const API_DOMAIN =`http://${env_config.userhost}:${env_config.serverport}`
 module.exports = function (/* ctx */) {
   return {

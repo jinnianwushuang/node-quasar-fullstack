@@ -1,1 +1,1 @@
- module.exports= {"userhost":"192.168.0.36","serverport":19090,"webpageport":20000,"apidocpot":19092} 
+ module.exports= {"userhost":"192.168.0.36","serverport":19090,"webpageport":20000,"apidocport":19092,"s_url":"http://192.168.0.36:19090/","a_url":"http://192.168.0.36:19092/","w_url":"http://192.168.0.36:20000/"} 
