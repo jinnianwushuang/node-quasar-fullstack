@@ -43,6 +43,17 @@ module.exports = app => {
  */  
 router.get("/fieldDescription",author.fieldDescription)
 
+
+    /**
+ * @api {get} /api/author/fastMock  一键模拟数据
+ * @apiGroup 作者模块-- author
+ *
+ * @apiSuccess {Object} all 详细字段说明看 /api/author/fieldDescription
+ */    
+
+
+router.get("/fastMock",author.fastMock)
+
   // Retrieve a single Author with id
     /**
  * @api {get} /api/author/:id  查询单个作者

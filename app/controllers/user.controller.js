@@ -27,8 +27,17 @@ exports.create = (req, res) => {
     });
     return;
   }
+  User.paginate({username:req.body.username }).then(data1=>{
 
-  // Create a User
+    if(data1.totalDocs>0){
+    
+      res.send({
+        code: MESSAGE_CODE.ERROR_ALREADY_EXIST,
+        message: "名称重复"
+        
+      });
+    }else{
+        // Create a User
   const user = new User({
  
     username: req.body.username,
@@ -53,6 +62,9 @@ exports.create = (req, res) => {
         message: err.message || "服务器处理失败."
       });
     });
+    }
+  })
+
 };
 
 // Retrieve all user from the database.
@@ -64,7 +76,7 @@ exports.findAll = (req, res) => {
 
   const { limit, offset } = getPagination(page, size);
 
-  User.paginate(condition, { offset, limit })
+  User.paginate(condition, { offset, limit,sort:{ updatedAt: -1 } })
     .then(data => {
      
       res.send({

@@ -44,6 +44,20 @@ module.exports = app => {
  */  
 router.get("/fieldDescription",tutorial.fieldDescription)
 
+
+    /**
+ * @api {get} /api/tutorial/fastMock  快速模拟数据
+ *@apiGroup 教程模块-- tutorial
+ *
+ * @apiSuccess {Object} all 详细字段说明看 /api/tutorial/fieldDescription
+ */  
+router.get("/fastMock",tutorial.fastMock)
+
+
+
+
+
+
   // Retrieve a single Tutorial with id
     /**
  * @api {get} /api/tutorial/:id  查询单个教程

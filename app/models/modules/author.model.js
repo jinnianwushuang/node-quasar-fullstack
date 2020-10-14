@@ -14,6 +14,9 @@ module.exports = (mongoose, mongoosePaginate) => {
     
     const { __v, _id, ...object } = this.toObject();
     object.id = _id;
+
+    object.updatedAt=Date.parse(object.updatedAt)
+    object.createdAt=Date.parse(object.createdAt)
     return object;
   });
 

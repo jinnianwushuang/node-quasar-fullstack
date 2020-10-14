@@ -1,6 +1,6 @@
 <!--
  * @Date           : 2020-09-13 00:45:57
- * @FilePath       : /tutorial/index.vue
+ * @FilePath       : /node-quasar-fullstack/src/pages/tutorial/index.vue
  * @Description    : 
 -->
 <template>
@@ -210,14 +210,10 @@ export default {
     // 批量新增模拟数据
     handle_click_mock_data() {
       console.log("批量新增模拟数据");
-      for (let i = 0; i < 20; i++) {
-        let obj = {
-          description: "学习稳如狗 " + i,
-          published: i % 2 == 0 ? true : false,
-          title: "全栈 学习" + i
-        };
-        this.handle_click_submit_add(obj);
-      }
+   
+   api_tutorial.get_tutorial_fastMock().then(()=>{
+     this.init_table_data()
+   })
     },
     // 新增或者修改后提交服务器
     handle_click_submit() {

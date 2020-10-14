@@ -7,6 +7,7 @@ const db = require("../models");
 const Tutorial = db.tutorial;
 const Tutorial_description = require("../description/tutorial.description");
 const MESSAGE_CODE = require("../config/code.config");
+const { tutorial } = require("../models");
 const getPagination = (page, size) => {
   const limit = size ? +size : 20;
   const offset = page ? (page - 1) * limit : 0;
@@ -27,8 +28,17 @@ exports.create = (req, res) => {
     });
     return;
   }
+  Tutorial.paginate({title:req.body.title }).then(data1=>{
 
-  // Create a Tutorial
+    if(data1.totalDocs>0){
+    
+      res.send({
+        code: MESSAGE_CODE.ERROR_ALREADY_EXIST,
+        message: "名称重复"
+        
+      });
+    }else{
+ // Create a Tutorial
   const tutorial = new Tutorial({
     title: req.body.title,
     description: req.body.description,
@@ -51,6 +61,10 @@ exports.create = (req, res) => {
         message: err.message || "服务器处理失败."
       });
     });
+
+    }
+  })
+ 
 };
 
 // Retrieve all Tutorials from the database.
@@ -62,7 +76,7 @@ exports.findAll = (req, res) => {
 
   const { limit, offset } = getPagination(page, size);
 
-  Tutorial.paginate(condition, { offset, limit })
+  Tutorial.paginate(condition, { offset, limit,sort:{ updatedAt: -1 } })
     .then(data => {
      
       res.send({
@@ -232,3 +246,39 @@ exports.fieldDescription = (req, res) => {
 exports.fastMockData = (req, res) => {
   const { num } = req.query;
 };
+
+
+exports.fastMock=(req,res)=>{
+  let arr=[]
+  let t=new Date().getTime()
+  for (let i = 0; i < 200; i++) {
+   
+    let obj = {
+   
+
+      title: "标题" + i+'---'+t,
+      published:  Math.random() > 0.5 ? true : false,
+
+      description: `模拟数据${i}`+'---'+t,
+    
+    };
+  arr.push(obj)
+  }
+  tutorial
+    .create(arr)
+    .then(data => {
+      res.send({
+        code: MESSAGE_CODE.SUCCESS,
+        message: "一共 模拟 新增 :"+ arr.length,
+        data
+      });
+    })
+    .catch(err => {
+      res.send({
+        code: MESSAGE_CODE.ERROR_SERVER_WRONG,
+        message: err.message || "服务器处理失败."
+      });
+    });
+
+
+}

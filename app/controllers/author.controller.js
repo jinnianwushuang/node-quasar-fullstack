@@ -30,13 +30,31 @@ exports.create = (req, res) => {
 
     return;
   }
+  // let f_Obj= Author.find({name:req.body.name })
+  // console.log('req.body.name',req.body.name);
+  // console.log(' f_Obj',f_Obj);
+  // res.send({
+  //   code: 6666,
+  //   message: "名称重复",
+  //   data:f_Obj
+  // });
+  
+  Author.paginate({name:req.body.name }).then(data1=>{
 
+  if(data1.totalDocs>0){
+  
+    res.send({
+      code: MESSAGE_CODE.ERROR_ALREADY_EXIST,
+      message: "名称重复"
+      
+    });
+  }else{
   // Create a Author
   const author = new Author({
     name: req.body.name,
     age: req.body.age || 18,
-    sex: req.body.sex,
-    married: req.body.married,
+    sex: Number(req.body.sex),
+    married: Boolean(req.body.married),
     nationality: req.body.nationality || "中国",
     address: req.body.address,
     tel: req.body.tel,
@@ -61,6 +79,19 @@ exports.create = (req, res) => {
         message: err.message || "服务器处理失败."
       });
     });
+
+
+
+
+  }
+
+
+
+  })
+
+
+
+
 };
 
 // Retrieve all Authors from the database.
@@ -75,7 +106,7 @@ exports.findAll = (req, res) => {
 
   const { limit, offset } = getPagination(page, size);
 
-  Author.paginate(condition, { offset, limit })
+  Author.paginate(condition, { offset, limit, sort:     { updatedAt: -1 } })
     .then(data => {
       res.send({
         code: MESSAGE_CODE.SUCCESS,
@@ -243,3 +274,42 @@ exports.fieldDescription = (req, res) => {
     }
   });
 };
+
+exports.fastMock=(req,res)=>{
+  let arr=[]
+  let t=new Date().getTime()
+  for (let i = 0; i < 200; i++) {
+   
+    let obj = {
+   
+
+      name: "作者" + i+'---'+t,
+
+      age: Math.ceil(Math.random() * 120),
+      sex: i % 2 == 0 ? 1 : 2,
+      married: Math.random() > 0.5 ? true : false,
+      nationality: "中国",
+      hobby: "学习",
+      description: `模拟数据${i}`+'---'+t,
+      remark: "handsome"
+    };
+  arr.push(obj)
+  }
+  Author
+    .create(arr)
+    .then(data => {
+      res.send({
+        code: MESSAGE_CODE.SUCCESS,
+        message: "一共 模拟 新增 :"+ arr.length,
+        data
+      });
+    })
+    .catch(err => {
+      res.send({
+        code: MESSAGE_CODE.ERROR_SERVER_WRONG,
+        message: err.message || "服务器处理失败."
+      });
+    });
+
+
+}

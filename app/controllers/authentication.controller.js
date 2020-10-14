@@ -65,7 +65,7 @@ exports.findAll = (req, res) => {
 
   const { limit, offset } = getPagination(page, size);
 
-  Authentication.paginate(condition, { offset, limit })
+  Authentication.paginate(condition, { offset, limit,sort:{ updatedAt: -1 } })
     .then(data => {
      
       res.send({
