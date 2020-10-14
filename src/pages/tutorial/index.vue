@@ -15,7 +15,7 @@
     <!-- 表格区域 -->
     <div class="q-py-md">
       <q-table
-      class="my-sticky-header-table"
+        class="my-sticky-header-table"
         :data="data"
         :columns="columns"
         hide-pagination
@@ -23,7 +23,6 @@
         hide-bottom
         row-key="name"
         :style="table_style"
-      
       >
         <template v-slot:body-cell-handle="props">
           <q-td :props="props">
@@ -41,30 +40,49 @@
             </div>
           </q-td>
         </template>
- 
       </q-table>
     </div>
     <!-- 翻页器 -->
-             <my-pagination
-            :total="total"
-            @pagination_change="handle_pagination_change"
-          ></my-pagination>
+    <my-pagination
+      :total="total"
+      @pagination_change="handle_pagination_change"
+    ></my-pagination>
     <!-- 弹出窗口 -->
-    <q-dialog v-model="show_edit_dialog" persistent transition-show="scale" transition-hide="scale">
-      <q-card  style="width:350px" class="q-px-md">
+    <q-dialog
+      v-model="show_edit_dialog"
+      persistent
+      transition-show="scale"
+      transition-hide="scale"
+    >
+      <q-card style="width:350px" class="q-px-md">
         <q-card-section>
-          <div class="text-h6">编辑弹窗</div>
+          <div class="text-h6">{{edit_dialog_title}}</div>
         </q-card-section>
 
-        <q-card-section class="q-pt-none">
-     <q-input outlined v-model="editing_obj.title" label="标题" />    
-         <div class="q-gutter-sm q-my-md">
-      <q-radio v-model="editing_obj.published" val="true" label="已发布" />
-      <q-radio v-model="editing_obj.published" val="false" label="未发布" />
+        <q-card-section class="q-pt-none q-gutter-y-sm">
+          <div class="row">
+            <div class="form-label">标题</div>
+            <q-input outlined dense v-model="editing_obj.title"> </q-input>
+          </div>
+          <div class="row">
+            <div class="form-label">性别</div>
+            <q-radio
+              v-model="editing_obj.published"
+              val="true"
+              label="已发布"
+            />
+            <q-radio
+              v-model="editing_obj.published"
+              val="false"
+              label="未发布"
+            />
+          </div>
 
-    </div> 
-     <q-input outlined v-model="editing_obj.description" label="描述" />     
-
+          <div class="row">
+            <div class="form-label">描述</div>
+            <q-input outlined dense v-model="editing_obj.description">
+            </q-input>
+          </div>
         </q-card-section>
         <q-card-actions align="right">
           <q-btn
@@ -81,7 +99,7 @@
 </template>
 
 <script>
-import { mapGetters } from 'vuex';
+import { mapGetters } from "vuex";
 
 import { columns } from "src/pages/tutorial/config/index.js";
 import { api_tutorial } from "src/api/index.js";
@@ -95,10 +113,9 @@ export default {
       columns,
       data: [],
       show_edit_dialog: false,
+       edit_dialog_title:'新增数据',
       total: 0,
-      table_style:{
-
-      },
+      table_style: {},
       pagination: {
         currentPage: 1,
         pageSize: 20,
@@ -113,26 +130,25 @@ export default {
       editing_obj: {}
     };
   },
-    computed: {
+  computed: {
     ...mapGetters({
-      window_size:"get_window_size"
-    }),
-
+      window_size: "get_window_size"
+    })
   },
   created() {
-    this.table_style={
-      height: window.innerHeight -210  +'px'
-    }
-   
+    this.table_style = {
+      height: window.innerHeight - 210 + "px"
+    };
+
     this.init_table_data();
     this.init_editing_obj();
   },
   watch: {
-   window_size(newValue, oldValue) {
-      console.log('window_size',this.window_size);
+    window_size(newValue, oldValue) {
+      console.log("window_size", this.window_size);
       // this.table_style={
-        // height:this.window_size.height-150   +"px",
-        // maxHeight:this.window_size.height-150   +"px",
+      // height:this.window_size.height-150   +"px",
+      // maxHeight:this.window_size.height-150   +"px",
       // }
     }
   },
@@ -146,15 +162,15 @@ export default {
       api_tutorial.get_tutorial_findAll(params).then(res => {
         console.log("----调用接口返回数据");
         console.log(res.data.data);
-        let data= this.$lodash.get(res,'data.data')
+        let data = this.$lodash.get(res, "data.data");
         this.data = data.data;
-        this.total =data.total;
-        this.$forceUpdate()
+        this.total = data.total;
+        this.$forceUpdate();
 
         this.pagination = {
           currentPage: data.currentPage,
-          pageSize:data.pageSize,
-          rowsPerPage:data.pageSize
+          pageSize: data.pageSize,
+          rowsPerPage: data.pageSize
         };
       });
     },
@@ -178,13 +194,14 @@ export default {
     // 新增
     handle_click_add() {
       console.log("新增");
+        this. edit_dialog_title='新增数据',
       this.init_editing_obj();
       this.show_edit_dialog = true;
     },
     // 编辑
     handle_click_edit(item) {
       console.log("编辑", item);
-
+ this. edit_dialog_title='编辑数据',
       this.editing_obj = this.$lodash.cloneDeep(item);
       this.show_edit_dialog = true;
     },
@@ -210,10 +227,10 @@ export default {
     // 批量新增模拟数据
     handle_click_mock_data() {
       console.log("批量新增模拟数据");
-   
-   api_tutorial.get_tutorial_fastMock().then(()=>{
-     this.init_table_data()
-   })
+
+      api_tutorial.get_tutorial_fastMock().then(() => {
+        this.init_table_data();
+      });
     },
     // 新增或者修改后提交服务器
     handle_click_submit() {

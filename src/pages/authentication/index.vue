@@ -9,13 +9,13 @@
     <div class="q-gutter-x-md q-mt-md">
       <q-btn color="primary" label="新增数据" @click="handle_click_add" />
       <q-btn color="primary" label="刷新数据" @click="handle_click_refresh" />
- 
+
       <q-btn color="red" label="一键删除" @click="handle_click_delete_all" />
     </div>
     <!-- 表格区域 -->
     <div class="q-py-md">
       <q-table
-      class="my-sticky-header-table"
+        class="my-sticky-header-table"
         :data="data"
         :columns="columns"
         hide-pagination
@@ -23,7 +23,6 @@
         hide-bottom
         row-key="name"
         :style="table_style"
-      
       >
         <template v-slot:body-cell-handle="props">
           <q-td :props="props">
@@ -41,25 +40,40 @@
             </div>
           </q-td>
         </template>
- 
       </q-table>
     </div>
     <!-- 翻页器 -->
-             <my-pagination
-            :total="total"
-            @pagination_change="handle_pagination_change"
-          ></my-pagination>
+    <my-pagination
+      :total="total"
+      @pagination_change="handle_pagination_change"
+    ></my-pagination>
     <!-- 弹出窗口 -->
-    <q-dialog v-model="show_edit_dialog" persistent transition-show="scale" transition-hide="scale">
-      <q-card  style="width:350px" class="q-px-md">
+    <q-dialog
+      v-model="show_edit_dialog"
+      persistent
+      transition-show="scale"
+      transition-hide="scale"
+    >
+      <q-card style="width:350px" class="q-px-md">
         <q-card-section>
-          <div class="text-h6">编辑弹窗</div>
+          <div class="text-h6">{{edit_dialog_title}}</div>
         </q-card-section>
 
-        <q-card-section class="q-pt-none">
-     <q-input outlined v-model="editing_obj.name" label="标题" />    
-     
-     <q-input outlined v-model="editing_obj.module" label="模块" />     
+        <q-card-section class="q-pt-none   q-gutter-y-sm">
+  
+          <div class="row">
+            <div class="form-label">标题</div>
+            <q-input outlined dense v-model="editing_obj.name"> </q-input>
+          </div>
+          <div class="row">
+            <div class="form-label">模块</div>
+            <q-input outlined dense v-model="editing_obj.module"> </q-input>
+          </div>
+                 <div class="row">
+            <div class="form-label">激活</div>
+            <q-checkbox v-model="editing_obj.effective" />
+          
+          </div>
 
         </q-card-section>
         <q-card-actions align="right">
@@ -77,7 +91,7 @@
 </template>
 
 <script>
-import { mapGetters } from 'vuex';
+import { mapGetters } from "vuex";
 
 import { columns } from "src/pages/authentication/config/index.js";
 import { api_authentication } from "src/api/index.js";
@@ -91,10 +105,9 @@ export default {
       columns,
       data: [],
       show_edit_dialog: false,
+       edit_dialog_title:'新增数据',
       total: 0,
-      table_style:{
-
-      },
+      table_style: {},
       pagination: {
         currentPage: 1,
         pageSize: 20,
@@ -102,36 +115,35 @@ export default {
         rowsPerPage: 20
       },
       editing_obj_template: {
-         name: '',
-        module:'',
-        api_method: '',
-        api_path: '',
+        name: "",
+        module: "",
+        api_method: "",
+        api_path: "",
         effective: false,
-        description: '',
+        description: ""
       },
       editing_obj: {}
     };
   },
-    computed: {
+  computed: {
     ...mapGetters({
-      window_size:"get_window_size"
-    }),
-
+      window_size: "get_window_size"
+    })
   },
   created() {
-    this.table_style={
-      height: window.innerHeight -210  +'px'
-    }
-   
+    this.table_style = {
+      height: window.innerHeight - 210 + "px"
+    };
+
     this.init_table_data();
     this.init_editing_obj();
   },
   watch: {
-   window_size(newValue, oldValue) {
-      console.log('window_size',this.window_size);
+    window_size(newValue, oldValue) {
+      console.log("window_size", this.window_size);
       // this.table_style={
-        // height:this.window_size.height-150   +"px",
-        // maxHeight:this.window_size.height-150   +"px",
+      // height:this.window_size.height-150   +"px",
+      // maxHeight:this.window_size.height-150   +"px",
       // }
     }
   },
@@ -145,15 +157,15 @@ export default {
       api_authentication.get_authentication_findAll(params).then(res => {
         console.log("----调用接口返回数据");
         console.log(res.data.data);
-        let data= this.$lodash.get(res,'data.data')
+        let data = this.$lodash.get(res, "data.data");
         this.data = data.data;
-        this.total =data.total;
-        this.$forceUpdate()
+        this.total = data.total;
+        this.$forceUpdate();
 
         this.pagination = {
           currentPage: data.currentPage,
-          pageSize:data.pageSize,
-          rowsPerPage:data.pageSize
+          pageSize: data.pageSize,
+          rowsPerPage: data.pageSize
         };
       });
     },
@@ -177,22 +189,25 @@ export default {
     // 新增
     handle_click_add() {
       console.log("新增");
+      this. edit_dialog_title='新增数据',
       this.init_editing_obj();
       this.show_edit_dialog = true;
     },
     // 编辑
     handle_click_edit(item) {
       console.log("编辑", item);
-
+ this. edit_dialog_title='编辑数据',
       this.editing_obj = this.$lodash.cloneDeep(item);
       this.show_edit_dialog = true;
     },
     // 删除
     handle_click_delete(item) {
       console.log("删除单个", item);
-      api_authentication.delete_authentication_by_id({ id: item.id }).then(res => {
-        this.init_table_data();
-      });
+      api_authentication
+        .delete_authentication_by_id({ id: item.id })
+        .then(res => {
+          this.init_table_data();
+        });
     },
     // 一键删除
     handle_click_delete_all() {
@@ -222,7 +237,7 @@ export default {
     // 提交新增
     handle_click_submit_add(obj) {
       let params = obj || this.editing_obj;
-      params.effective=true
+      params.effective = true;
       api_authentication.post_authentication_create(params).then(res => {
         if (!obj) {
           this.init_table_data();
@@ -232,7 +247,7 @@ export default {
     //提交修改
     handle_click_submit_edit() {
       let params = obj || this.editing_obj;
-            params.effective=true
+      params.effective = true;
       api_authentication.put_authentication_by_id(params).then(res => {
         this.init_table_data();
       });

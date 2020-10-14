@@ -53,14 +53,26 @@
     <q-dialog v-model="show_edit_dialog" persistent transition-show="scale" transition-hide="scale">
       <q-card  style="width:350px" class="q-px-md">
         <q-card-section>
-          <div class="text-h6">编辑弹窗</div>
+          <div class="text-h6">{{edit_dialog_title}}</div>
+         
         </q-card-section>
+       
 
-        <q-card-section class="q-pt-none">
-     <q-input outlined v-model="editing_obj.username" label="标题" />    
-     <q-input outlined v-model="editing_obj.password" label="密码" />    
-     
-     <q-input outlined v-model="editing_obj.description" label="描述" />     
+        <q-card-section class="q-pt-none  q-gutter-y-sm">
+  
+      <div class="row">
+            <div class="form-label">标题</div>
+            <q-input outlined dense v-model="editing_obj.username"> </q-input>
+          </div>
+                <div class="row">
+            <div class="form-label">密码</div>
+            <q-input outlined dense v-model="editing_obj.password"> </q-input>
+          </div>
+                <div class="row">
+            <div class="form-label">描述</div>
+            <q-input outlined dense v-model="editing_obj.description"> </q-input>
+          </div>
+
 
         </q-card-section>
         <q-card-actions align="right">
@@ -93,6 +105,7 @@ export default {
       columns,
       data: [],
       show_edit_dialog: false,
+       edit_dialog_title:'新增数据',
       total: 0,
       table_style:{
 
@@ -176,13 +189,14 @@ export default {
     // 新增
     handle_click_add() {
       console.log("新增");
+        this. edit_dialog_title='新增数据',
       this.init_editing_obj();
       this.show_edit_dialog = true;
     },
     // 编辑
     handle_click_edit(item) {
       console.log("编辑", item);
-
+ this. edit_dialog_title='编辑数据',
       this.editing_obj = this.$lodash.cloneDeep(item);
       this.show_edit_dialog = true;
     },
