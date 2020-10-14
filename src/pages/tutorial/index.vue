@@ -56,7 +56,7 @@
     >
       <q-card style="width:350px" class="q-px-md">
         <q-card-section>
-          <div class="text-h6">{{edit_dialog_title}}</div>
+          <div class="text-h6">{{ edit_dialog_title }}</div>
         </q-card-section>
 
         <q-card-section class="q-pt-none q-gutter-y-sm">
@@ -113,7 +113,7 @@ export default {
       columns,
       data: [],
       show_edit_dialog: false,
-       edit_dialog_title:'新增数据',
+      edit_dialog_title: "新增数据",
       total: 0,
       table_style: {},
       pagination: {
@@ -194,15 +194,14 @@ export default {
     // 新增
     handle_click_add() {
       console.log("新增");
-        this. edit_dialog_title='新增数据',
-      this.init_editing_obj();
+      (this.edit_dialog_title = "新增数据"), this.init_editing_obj();
       this.show_edit_dialog = true;
     },
     // 编辑
     handle_click_edit(item) {
       console.log("编辑", item);
- this. edit_dialog_title='编辑数据',
-      this.editing_obj = this.$lodash.cloneDeep(item);
+      (this.edit_dialog_title = "编辑数据"),
+        (this.editing_obj = this.$lodash.cloneDeep(item));
       this.show_edit_dialog = true;
     },
     // 删除
