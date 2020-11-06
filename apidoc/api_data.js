@@ -70,6 +70,29 @@ define({ "api": [
   },
   {
     "type": "get",
+    "url": "/api/author/fastMock",
+    "title": "一键模拟数据",
+    "group": "作者模块--_author",
+    "success": {
+      "fields": {
+        "Success 200": [
+          {
+            "group": "Success 200",
+            "type": "Object",
+            "optional": false,
+            "field": "all",
+            "description": "<p>详细字段说明看 /api/author/fieldDescription</p>"
+          }
+        ]
+      }
+    },
+    "version": "0.0.0",
+    "filename": "app/routes/modules/author.routes.js",
+    "groupTitle": "作者模块--_author",
+    "name": "GetApiAuthorFastmock"
+  },
+  {
+    "type": "get",
     "url": "/api/author/fieldDescription",
     "title": "返回作者表字段信息说明",
     "group": "作者模块--_author",
@@ -251,6 +274,29 @@ define({ "api": [
     "filename": "app/routes/modules/turorial.routes.js",
     "groupTitle": "教程模块--_tutorial",
     "name": "GetApiTutorial"
+  },
+  {
+    "type": "get",
+    "url": "/api/tutorial/fastMock",
+    "title": "快速模拟数据",
+    "group": "教程模块--_tutorial",
+    "success": {
+      "fields": {
+        "Success 200": [
+          {
+            "group": "Success 200",
+            "type": "Object",
+            "optional": false,
+            "field": "all",
+            "description": "<p>详细字段说明看 /api/tutorial/fieldDescription</p>"
+          }
+        ]
+      }
+    },
+    "version": "0.0.0",
+    "filename": "app/routes/modules/turorial.routes.js",
+    "groupTitle": "教程模块--_tutorial",
+    "name": "GetApiTutorialFastmock"
   },
   {
     "type": "get",

@@ -15,6 +15,7 @@ db.mongoose = mongoose;
 db.url = dbConfig.url;
 db.tutorial = require("./modules/tutorial.model.js")(mongoose, mongoosePaginate);
 db.author = require("./modules/author.model.js")(mongoose, mongoosePaginate);
+db.artical = require("./modules/artical.model.js")(mongoose, mongoosePaginate);
 db.authentication = require("./modules/authentication.model.js")(mongoose, mongoosePaginate);
 db.user = require("./modules/user.model.js")(mongoose, mongoosePaginate);
 

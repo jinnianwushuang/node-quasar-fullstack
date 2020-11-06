@@ -7,6 +7,7 @@ const db = require("../models");
 const Tutorial = db.tutorial;
 const Tutorial_description = require("../description/tutorial.description");
 const MESSAGE_CODE = require("../config/code.config");
+const file_controller= require("./file.controller")
 const { tutorial } = require("../models");
 const getPagination = (page, size) => {
   const limit = size ? +size : 20;
@@ -282,3 +283,10 @@ exports.fastMock=(req,res)=>{
 
 
 }
+
+// 上传图片 
+exports.uploading=(req,res,next)=>{
+  return file_controller.upload_img( req,res,next)
+  
+  }
+  
