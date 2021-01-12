@@ -1,3 +1,8 @@
+/*
+ * @Date           : 2020-10-15 00:58:40
+ * @FilePath       : /node-quasar-fullstack/src/config/menu.js
+ * @Description    : 
+ */
 
 const menu_data = [
   {
@@ -20,7 +25,11 @@ const menu_data = [
     path: "author",
     name: "author",
   },
-
+  {
+    title: '文章模块',
+    path: "artical",
+    name: "artical",
+  },
 
 ];
 export default menu_data

@@ -29,7 +29,7 @@ export const get_tutorial_fastMock = (params,url="/api/tutorial/fastMock") => ax
 export const get_tutorial_by_id = (params,url="/api/tutorial/") => axios.get(url+params.id, { params})
 
 // 通过id 更新单个 教程信息
-export const put_tutorial_by_id = (params,url="/api/tutorial/") => axios.put(url+params.id, { params})
+export const put_tutorial_by_id = (params,url="/api/tutorial/") => axios.put(url+params.id, params)
 
 // 通过id  删除单个 教程信息
 export const delete_tutorial_by_id = (params,url="/api/tutorial/") => axios.delete(url+params.id, { params})

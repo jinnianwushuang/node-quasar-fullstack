@@ -27,7 +27,7 @@ export const get_authentication_findAllPublished = (params,url="/api/authenticat
 export const get_authentication_by_id = (params,url="/api/authentication/") => axios.get(url+params.id, { params})
 
 // 通过id 更新单个 教程信息
-export const put_authentication_by_id = (params,url="/api/authentication/") => axios.put(url+params.id, { params})
+export const put_authentication_by_id = (params,url="/api/authentication/") => axios.put(url+params.id, params)
 
 // 通过id  删除单个 教程信息
 export const delete_authentication_by_id = (params,url="/api/authentication/") => axios.delete(url+params.id, { params})

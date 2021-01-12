@@ -27,7 +27,7 @@ export const get_user_findAllPublished = (params,url="/api/user/published") => a
 export const get_user_by_id = (params,url="/api/user/") => axios.get(url+params.id, { params})
 
 // 通过id 更新单个 教程信息
-export const put_user_by_id = (params,url="/api/user/") => axios.put(url+params.id, { params})
+export const put_user_by_id = (params,url="/api/user/") => axios.put(url+params.id,  params)
 
 // 通过id  删除单个 教程信息
 export const delete_user_by_id = (params,url="/api/user/") => axios.delete(url+params.id, { params})

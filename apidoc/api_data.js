@@ -415,6 +415,213 @@ define({ "api": [
   },
   {
     "type": "delete",
+    "url": "/api/artical",
+    "title": "删除所有文章",
+    "group": "文章模块--_artical",
+    "success": {
+      "fields": {
+        "Success 200": [
+          {
+            "group": "Success 200",
+            "type": "Object",
+            "optional": false,
+            "field": "all",
+            "description": "<p>详细字段说明看 /api/artical/fieldDescription</p>"
+          }
+        ]
+      }
+    },
+    "version": "0.0.0",
+    "filename": "app/routes/modules/artical.routes.js",
+    "groupTitle": "文章模块--_artical",
+    "name": "DeleteApiArtical"
+  },
+  {
+    "type": "delete",
+    "url": "/api/artical/:id",
+    "title": "删除单个文章",
+    "group": "文章模块--_artical",
+    "success": {
+      "fields": {
+        "Success 200": [
+          {
+            "group": "Success 200",
+            "type": "Object",
+            "optional": false,
+            "field": "all",
+            "description": "<p>详细字段说明看 /api/artical/fieldDescription</p>"
+          }
+        ]
+      }
+    },
+    "version": "0.0.0",
+    "filename": "app/routes/modules/artical.routes.js",
+    "groupTitle": "文章模块--_artical",
+    "name": "DeleteApiArticalId"
+  },
+  {
+    "type": "get",
+    "url": "/api/artical",
+    "title": "查询所有文章",
+    "group": "文章模块--_artical",
+    "success": {
+      "fields": {
+        "Success 200": [
+          {
+            "group": "Success 200",
+            "type": "Object",
+            "optional": false,
+            "field": "all",
+            "description": "<p>详细字段说明看 /api/artical/fieldDescription</p>"
+          }
+        ]
+      }
+    },
+    "version": "0.0.0",
+    "filename": "app/routes/modules/artical.routes.js",
+    "groupTitle": "文章模块--_artical",
+    "name": "GetApiArtical"
+  },
+  {
+    "type": "get",
+    "url": "/api/artical/fastMock",
+    "title": "一键模拟数据",
+    "group": "文章模块--_artical",
+    "success": {
+      "fields": {
+        "Success 200": [
+          {
+            "group": "Success 200",
+            "type": "Object",
+            "optional": false,
+            "field": "all",
+            "description": "<p>详细字段说明看 /api/artical/fieldDescription</p>"
+          }
+        ]
+      }
+    },
+    "version": "0.0.0",
+    "filename": "app/routes/modules/artical.routes.js",
+    "groupTitle": "文章模块--_artical",
+    "name": "GetApiArticalFastmock"
+  },
+  {
+    "type": "get",
+    "url": "/api/artical/fieldDescription",
+    "title": "返回文章表字段信息说明",
+    "group": "文章模块--_artical",
+    "success": {
+      "fields": {
+        "Success 200": [
+          {
+            "group": "Success 200",
+            "type": "Object",
+            "optional": false,
+            "field": "all",
+            "description": "<p>详细字段说明看 /api/artical/fieldDescription</p>"
+          }
+        ]
+      }
+    },
+    "version": "0.0.0",
+    "filename": "app/routes/modules/artical.routes.js",
+    "groupTitle": "文章模块--_artical",
+    "name": "GetApiArticalFielddescription"
+  },
+  {
+    "type": "get",
+    "url": "/api/artical/findAllBySex",
+    "title": "通过性别查询",
+    "group": "文章模块--_artical",
+    "success": {
+      "fields": {
+        "Success 200": [
+          {
+            "group": "Success 200",
+            "type": "Object",
+            "optional": false,
+            "field": "all",
+            "description": "<p>详细字段说明看 /api/artical/fieldDescription</p>"
+          }
+        ]
+      }
+    },
+    "version": "0.0.0",
+    "filename": "app/routes/modules/artical.routes.js",
+    "groupTitle": "文章模块--_artical",
+    "name": "GetApiArticalFindallbysex"
+  },
+  {
+    "type": "get",
+    "url": "/api/artical/:id",
+    "title": "查询单个文章",
+    "group": "文章模块--_artical",
+    "success": {
+      "fields": {
+        "Success 200": [
+          {
+            "group": "Success 200",
+            "type": "Object",
+            "optional": false,
+            "field": "all",
+            "description": "<p>详细字段说明看 /api/artical/fieldDescription</p>"
+          }
+        ]
+      }
+    },
+    "version": "0.0.0",
+    "filename": "app/routes/modules/artical.routes.js",
+    "groupTitle": "文章模块--_artical",
+    "name": "GetApiArticalId"
+  },
+  {
+    "type": "post",
+    "url": "/api/artical",
+    "title": "创建一个文章",
+    "group": "文章模块--_artical",
+    "success": {
+      "fields": {
+        "Success 200": [
+          {
+            "group": "Success 200",
+            "type": "Object",
+            "optional": false,
+            "field": "all",
+            "description": "<p>详细字段说明看 /api/artical/fieldDescription</p>"
+          }
+        ]
+      }
+    },
+    "version": "0.0.0",
+    "filename": "app/routes/modules/artical.routes.js",
+    "groupTitle": "文章模块--_artical",
+    "name": "PostApiArtical"
+  },
+  {
+    "type": "put",
+    "url": "/api/artical/:id",
+    "title": "修改单个文章",
+    "group": "文章模块--_artical",
+    "success": {
+      "fields": {
+        "Success 200": [
+          {
+            "group": "Success 200",
+            "type": "Object",
+            "optional": false,
+            "field": "all",
+            "description": "<p>详细字段说明看 /api/artical/fieldDescription</p>"
+          }
+        ]
+      }
+    },
+    "version": "0.0.0",
+    "filename": "app/routes/modules/artical.routes.js",
+    "groupTitle": "文章模块--_artical",
+    "name": "PutApiArticalId"
+  },
+  {
+    "type": "delete",
     "url": "/api/authentication",
     "title": "删除所有权限",
     "group": "权限模块--_authentication",
@@ -596,6 +803,29 @@ define({ "api": [
     "filename": "app/routes/modules/authentication.routes.js",
     "groupTitle": "权限模块--_authentication",
     "name": "PutApiAuthenticationId"
+  },
+  {
+    "type": "post",
+    "url": "/api/file",
+    "title": "创建一个用户",
+    "group": "用户模块--_file",
+    "success": {
+      "fields": {
+        "Success 200": [
+          {
+            "group": "Success 200",
+            "type": "Object",
+            "optional": false,
+            "field": "all",
+            "description": "<p>详细字段说明看 /api/file/fieldDescription</p>"
+          }
+        ]
+      }
+    },
+    "version": "0.0.0",
+    "filename": "app/routes/modules/file.routes.js",
+    "groupTitle": "用户模块--_file",
+    "name": "PostApiFile"
   },
   {
     "type": "delete",

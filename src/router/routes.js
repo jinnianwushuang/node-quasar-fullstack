@@ -33,7 +33,13 @@ const routes = [
         name: "author",
 
         component: () => import("src/pages/author/index.vue")
-      }
+      },
+      {
+        path: "artical",
+        name: "artical",
+
+        component: () => import("src/pages/artical/index.vue")
+      },
 
     ]
   },

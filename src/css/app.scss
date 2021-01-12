@@ -5,6 +5,16 @@
     color: rgba(0, 0, 0, 0.54);
     font-size: 24px;
     line-height: 36px;
-    width: 100px;
+    width: 150px;
+    text-align: right;
+    padding-right: 20px;
 }
 
+.text-ellipsis{
+    width: 300px;
+    max-width: 300px;
+    white-space: nowrap;
+    /* word-break: break-all; */
+    text-overflow: ellipsis;
+    overflow: hidden;
+}
