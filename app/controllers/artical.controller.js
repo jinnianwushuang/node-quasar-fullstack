@@ -5,7 +5,7 @@
  */
 const db = require("../models");
 const Artical = db.artical;
-
+var randomstring = require("randomstring");
 const MESSAGE_CODE = require("../config/code.config");
 const file_controller= require("./file.controller")
 const getPagination = (page, size) => {
@@ -82,7 +82,7 @@ exports.findAll = (req, res) => {
 
   const { limit, offset } = getPagination(page, size);
 
-  Artical.paginate(condition, { offset, limit, sort: { updatedAt: -1 } })
+  Artical.paginate(condition, { offset, limit, sort: { createdAt: -1 } })
     .then(data => {
       res.send({
         code: MESSAGE_CODE.SUCCESS,
@@ -254,15 +254,23 @@ exports.fastMock = (req, res) => {
   let t = new Date().getTime();
   for (let i = 0; i < 200; i++) {
     let obj = {
-      name: "作者" + i + "---" + t,
+      title:  randomstring.generate(15), // 长标题
+      title_short: randomstring.generate(7), //短标题
+      description: randomstring.generate(15), // 标题下的描述
+      show_date: t- Math.ceil( Math.random()*10000000) , // 文章显示的 日期
+      content: randomstring.generate(55), // 文章主要内容  ，富文本
+      banner: "", //文章的大幅 主题图片
+      
+      type: "1", // 文章的主题类型
+      active:'0', //是否启用
+      type_hot: "0", // 文章是否是 其 同主题类型 相关的 文章  的 热门 文章   （单类轮播图）
+      type_top: "0", // 文章是否是  其 同主题类型 相关的 文章  的 置顶 文章
+      home_hot: "0", // 文章是否是  所有的主题类型 相关的 文章  的 热门 文章   （首页轮播图）
+      home_top: "0" // 文章是否是  所有的主题类型 相关的 文章  的 置顶 文章
 
-      age: Math.ceil(Math.random() * 120),
-      sex: i % 2 == 0 ? 1 : 2,
-      married: Math.random() > 0.5 ? true : false,
-      nationality: "中国",
-      hobby: "学习",
-      description: `模拟数据${i}` + "---" + t,
-      remark: "handsome"
+
+     
+   
     };
     arr.push(obj);
   }

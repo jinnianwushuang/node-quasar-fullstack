@@ -5,10 +5,11 @@
  */
 
 const routes = [
+  { path: '/', component: () => import('src/pages/login/login.vue') },
   {
     path: "/",
     redirect: { name: "tutorial" },
-    component: () => import("layouts/MainLayout.vue"),
+    component: () => import("src/layouts/MainLayout.vue"),
     children: [
       {
         path: "tutorial",

@@ -6,8 +6,8 @@
 
 
 export const  columns=[
-  { name: 'handle', align: 'center', label: '操作', field: '' },
-    { name: 'id', align: 'center', label: 'ID', field: 'id' },
+ 
+  
     {
       name: 'name',
       required: true,
@@ -25,6 +25,7 @@ export const  columns=[
     { name: 'description', align: 'center', label: '描述', field: 'description' },
     { name: 'createdAt', align: 'center', label: '创建时间', field: 'createdAt' },
     { name: 'updatedAt', align: 'center', label: '更新时间', field: 'updatedAt' },
+    { name: 'handle', align: 'center', label: '操作', field: '' },
 
 
 ]

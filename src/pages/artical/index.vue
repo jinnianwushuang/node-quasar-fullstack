@@ -25,8 +25,13 @@
         :style="table_style"
       >
         <template v-slot:body-cell-handle="props">
-          <q-td :props="props">
+          <q-td :props="props" class="bg-teal-4">
             <div class="q-gutter-x-md">
+                <q-checkbox v-model="props.row.active" label="启用" true-value="1" false-value="0"         @input="handle_click_update_item(props.row,'active')" />
+                <q-checkbox v-model="props.row.type_hot" label="单类曝光"  true-value="1" false-value="0"  @input="handle_click_update_item(props.row,'type_hot')"   />
+                <q-checkbox v-model="props.row.type_top" label="单类置顶"  true-value="1" false-value="0"  @input="handle_click_update_item(props.row,'type_top')"   />
+                <q-checkbox v-model="props.row.home_hot" label="首页曝光"  true-value="1" false-value="0"  @input="handle_click_update_item(props.row,'home_hot')"   />
+                <q-checkbox v-model="props.row.home_top" label="首页曝光"  true-value="1" false-value="0"  @input="handle_click_update_item(props.row,'home_top')"   />
               <q-btn
                 color="primary"
                 label="编辑"
@@ -169,17 +174,19 @@ export default {
       },
       file:"", // 主题图片
       editing_obj_template: {
-        title: "String", // 长标题
-        title_short: "String", //短标题
-        description: "String", // 标题下的描述
-        show_date: Date, // 文章显示的 日期
-        content: "String", // 文章主要内容  ，富文本
-        banner: "String", //文章的大幅 主题图片
-        type: "String", // 文章的主题类型
-        type_hot: "String", // 文章是否是 其 同主题类型 相关的 文章  的 热门 文章   （单类轮播图）
-        type_top: "String", // 文章是否是  其 同主题类型 相关的 文章  的 置顶 文章
-        home_hot: "String", // 文章是否是  所有的主题类型 相关的 文章  的 热门 文章   （首页轮播图）
-        home_top: "String" // 文章是否是  所有的主题类型 相关的 文章  的 置顶 文章
+        title: "", // 长标题
+        title_short: "", //短标题
+        description: "", // 标题下的描述
+        show_date: '', // 文章显示的 日期
+        content: "", // 文章主要内容  ，富文本
+        banner: "", //文章的大幅 主题图片
+        
+        type: "1", // 文章的主题类型
+        active:'0', //是否启用
+        type_hot: "0", // 文章是否是 其 同主题类型 相关的 文章  的 热门 文章   （单类轮播图）
+        type_top: "0", // 文章是否是  其 同主题类型 相关的 文章  的 置顶 文章
+        home_hot: "0", // 文章是否是  所有的主题类型 相关的 文章  的 热门 文章   （首页轮播图）
+        home_top: "0" // 文章是否是  所有的主题类型 相关的 文章  的 置顶 文章
       },
       editing_obj: {}
     };
@@ -315,9 +322,9 @@ export default {
      * item,表格那一列数据
      * obj 要更新的 键值对对象
      */
-    handle_click_update_item(item, obj) {
+    handle_click_update_item(item, key) {
       let params = {
-        ...obj,
+         [key]: item[key],
         id: item.id
       };
       api_artical.put_artical_by_id(params).then(res => {
@@ -326,6 +333,7 @@ export default {
     },
     // 上传图片
     handle_upload_image(){
+      
 
     }
   }

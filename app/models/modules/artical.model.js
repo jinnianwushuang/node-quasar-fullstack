@@ -13,7 +13,9 @@ module.exports = (mongoose, mongoosePaginate) => {
       show_date:Date,// 文章显示的 日期
       content:String,// 文章主要内容  ，富文本
       banner:String, //文章的大幅 主题图片
+
       type:String ,// 文章的主题类型
+      active:String, //是否启用
       type_hot:String, // 文章是否是 其 同主题类型 相关的 文章  的 热门 文章   （单类轮播图）
       type_top:String,// 文章是否是  其 同主题类型 相关的 文章  的 置顶 文章     
       home_hot:String,// 文章是否是  所有的主题类型 相关的 文章  的 热门 文章   （首页轮播图） 
