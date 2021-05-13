@@ -5,7 +5,7 @@
  */
 import axios from "axios"
 
-
+import { LocalStorage, SessionStorage } from 'quasar'
 // axios.defaults.baseURL = 'https://api.example.com';
 // axios.defaults.headers.common['Authorization'] = AUTH_TOKEN;
 // axios.defaults.headers.post['Content-Type'] = 'application/x-www-form-urlencoded';
@@ -18,7 +18,7 @@ axios.interceptors.request.use(function (config) {
     // 在发送请求之前做些什么
     console.log( ' // 在发送请求之前做些什么' )
     
-    config.headers['link-id']=uid()
+    config.headers['link-id']=  SessionStorage.getItem("token") || ''
     console.log(config);
     return config;
   }, function (error) {

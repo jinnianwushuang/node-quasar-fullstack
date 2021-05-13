@@ -105,7 +105,7 @@ fs.promises.writeFile("./env.js", env_config_str).then(() => {
             console.log(
               colors.yellow("----------欢迎来到錦年node全栈学习项目----------")
             );
-            shell.exec("npm run start2");
+            // shell.exec("npm run start");
           });
       });
     });

@@ -1,10 +1,10 @@
 /*
  * @Date           : 2020-09-09 23:56:34
- * @FilePath       : /node-quasar-fullstack/app/routes/modules/file.routes.js
+ * @FilePath       : /node-quasar-fullstack/app/routes/modules/backend/file.routes.js
  * @Description    : 
  */
 module.exports = app => {
-    const file = require("../../controllers/file.controller.js");
+    const file = require("../../../controllers/file.controller.js");
   
     var router = require("express").Router();
   
@@ -15,7 +15,7 @@ module.exports = app => {
    *
    * @apiSuccess {Object} all 详细字段说明看 /api/file/fieldDescription
    */
-    router.post("/uploadimg", file.upload_img);
+    router.post("/uploadimg", file.ploaadimg);
   
  
   

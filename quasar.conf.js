@@ -88,7 +88,7 @@ module.exports = function (/* ctx */) {
       host:env_config.userhost,
       https: false,
       port: env_config.webpageport,
-      open: true, // opens browser window automatically
+      open: false, // opens browser window automatically
       proxy: {
         '/api/': {
           target: API_DOMAIN,

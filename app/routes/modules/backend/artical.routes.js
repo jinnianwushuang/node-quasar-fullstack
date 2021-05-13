@@ -4,7 +4,7 @@
  * @Description    : 
  */
 module.exports = app => {
-  const artical = require("../../controllers/artical.controller.js");
+  const artical = require("../../../controllers/artical.controller.js");
 
   var router = require("express").Router();
 

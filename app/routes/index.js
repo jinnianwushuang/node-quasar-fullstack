@@ -4,11 +4,16 @@
  * @Description    : 路由总入口文件
  */
 module.exports= app=>{
-    require("./modules/turorial.routes")(app);
-    require("./modules/author.routes")(app);
-    require("./modules/artical.routes")(app);
-    require("./modules/user.routes")(app);
-    require("./modules/authentication.routes")(app);
+    // 后台侧
+    require("./modules/backend/turorial.routes")(app);
+    require("./modules/backend/author.routes")(app);
+    require("./modules/backend/artical.routes")(app);
+    require("./modules/backend/user.routes")(app);
+    require("./modules/backend/authentication.routes")(app);
+    //前端测
+
+    require("./modules/frontend/client.routes")(app);
+    require("./modules/frontend/file.routes")(app);
 
 
 
