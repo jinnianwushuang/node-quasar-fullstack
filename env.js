@@ -126,6 +126,7 @@ npm i
 </html>
   `;
 module.exports = {
+  IP,
   userhost,
   serverport,
   webpageport,

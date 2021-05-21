@@ -17,17 +17,14 @@
     "dev": "npm run start ",
     "open-all": "node ./opener.js",
     "make-apidoc": " apidoc -i app/ -o apidoc/  ",
-    "show-apidoc": " http-server ./apidoc/  -p 29093 -s  ",
     "init-apidoc-json": "node ./initdoc.js",
     "start-server": "nodemon --harmony  server.js    ",
     "start-webpage": "quasar dev    ",
-    "start-apidoc": "run-s    init-apidoc-json  make-apidoc show-apidoc",
+    "start-apidoc": "run-s    init-apidoc-json  make-apidoc ",
     "start-fullstack-p": "run-p start-server start-webpage",
     "start": "run-p   start-apidoc  start-fullstack-p    open-all",
     "demo": "node ./server.js -demo ",
     "prod": "node ./server.js -prod "
- 
- 
   },
   "dependencies": {
     "@quasar/extras": "^1.0.0",
@@ -54,6 +51,7 @@
     "@quasar/app": "^2.0.0",
     "apidoc": "^0.25.0",
     "http-server": "^0.12.3",
+    "live-server": "^1.2.1",
     "nodemon": "^2.0.4",
     "npm-run-all": "^4.1.5"
   },
