@@ -15,26 +15,19 @@
   "scripts": {
     "test": "echo \"No test specified\" && exit 0",
     "dev": "npm run start ",
-    "doc": "run-s  start-makedoc  start-showdoc ",
-    "makedoc": "run-s    start-init-apidoc-json  start-makedoc",
+    "open-all": "node ./opener.js",
+    "make-apidoc": " apidoc -i app/ -o apidoc/  ",
+    "show-apidoc": " http-server ./apidoc/  -p 29093 -s  ",
+    "init-apidoc-json": "node ./initdoc.js",
     "start-server": "nodemon --harmony  server.js    ",
-    "start-serversss": "node  ./server.js",
-    "start-webpage2": "quasar dev  ",
-    "start-webpage": "run-p start-webpage2     ",
-    "start-init-apidoc-json": "node ./project.init.dev.js",
-    "start-makedoc": " apidoc -i app/ -o apidoc/  ",
-    "start-showdoc": " http-server ./apidoc/  -p 29093 -s  ",
-    "start-doc": "run-s start-makedoc  start-showdoc ",
+    "start-webpage": "quasar dev    ",
+    "start-apidoc": "run-s    init-apidoc-json  make-apidoc show-apidoc",
     "start-fullstack-p": "run-p start-server start-webpage",
-    "init-env": "node project.init.dev.js",
-    "start4": "run-p start-server start-webpage",
-    "start": "run-p    start-fullstack-p  start-showdoc  open-all",
-    "start3": "run-p    start-fullstack-p  start-makedoc ",
-    "start5": "run-s   init-env  start2 ",
+    "start": "run-p   start-apidoc  start-fullstack-p    open-all",
     "demo": "node ./server.js -demo ",
-    "prod": "node ./server.js -prod ",
-    "start111": "node project.init.dev.js",
-    "open-all": "node ./opener.js"
+    "prod": "node ./server.js -prod "
+ 
+ 
   },
   "dependencies": {
     "@quasar/extras": "^1.0.0",

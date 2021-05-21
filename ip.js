@@ -23,7 +23,7 @@ function getIPAdress() {
     }
   }
 }
-const myHost = getIPAdress();
-console.log('myHost',  myHost);
+const IP = getIPAdress();
+console.log('IP',  IP);
 
-module.exports= myHost
+module.exports= IP

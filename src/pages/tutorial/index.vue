@@ -54,7 +54,7 @@
       transition-show="scale"
       transition-hide="scale"
     >
-      <q-card style="width:350px" class="q-px-md">
+      <q-card style="width:550px" class="q-px-md">
         <q-card-section>
           <div class="text-h6">{{ edit_dialog_title }}</div>
         </q-card-section>

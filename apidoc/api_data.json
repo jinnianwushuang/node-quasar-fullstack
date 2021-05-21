@@ -18,7 +18,7 @@
       }
     },
     "version": "0.0.0",
-    "filename": "app/routes/modules/author.routes.js",
+    "filename": "app/routes/modules/backend/author.routes.js",
     "groupTitle": "作者模块--_author",
     "name": "DeleteApiAuthor"
   },
@@ -41,7 +41,7 @@
       }
     },
     "version": "0.0.0",
-    "filename": "app/routes/modules/author.routes.js",
+    "filename": "app/routes/modules/backend/author.routes.js",
     "groupTitle": "作者模块--_author",
     "name": "DeleteApiAuthorId"
   },
@@ -64,7 +64,7 @@
       }
     },
     "version": "0.0.0",
-    "filename": "app/routes/modules/author.routes.js",
+    "filename": "app/routes/modules/backend/author.routes.js",
     "groupTitle": "作者模块--_author",
     "name": "GetApiAuthor"
   },
@@ -87,7 +87,7 @@
       }
     },
     "version": "0.0.0",
-    "filename": "app/routes/modules/author.routes.js",
+    "filename": "app/routes/modules/backend/author.routes.js",
     "groupTitle": "作者模块--_author",
     "name": "GetApiAuthorFastmock"
   },
@@ -110,7 +110,7 @@
       }
     },
     "version": "0.0.0",
-    "filename": "app/routes/modules/author.routes.js",
+    "filename": "app/routes/modules/backend/author.routes.js",
     "groupTitle": "作者模块--_author",
     "name": "GetApiAuthorFielddescription"
   },
@@ -133,7 +133,7 @@
       }
     },
     "version": "0.0.0",
-    "filename": "app/routes/modules/author.routes.js",
+    "filename": "app/routes/modules/backend/author.routes.js",
     "groupTitle": "作者模块--_author",
     "name": "GetApiAuthorFindallbysex"
   },
@@ -156,7 +156,7 @@
       }
     },
     "version": "0.0.0",
-    "filename": "app/routes/modules/author.routes.js",
+    "filename": "app/routes/modules/backend/author.routes.js",
     "groupTitle": "作者模块--_author",
     "name": "GetApiAuthorId"
   },
@@ -179,7 +179,7 @@
       }
     },
     "version": "0.0.0",
-    "filename": "app/routes/modules/author.routes.js",
+    "filename": "app/routes/modules/backend/author.routes.js",
     "groupTitle": "作者模块--_author",
     "name": "PostApiAuthor"
   },
@@ -202,7 +202,7 @@
       }
     },
     "version": "0.0.0",
-    "filename": "app/routes/modules/author.routes.js",
+    "filename": "app/routes/modules/backend/author.routes.js",
     "groupTitle": "作者模块--_author",
     "name": "PutApiAuthorId"
   },
@@ -225,7 +225,7 @@
       }
     },
     "version": "0.0.0",
-    "filename": "app/routes/modules/turorial.routes.js",
+    "filename": "app/routes/modules/backend/turorial.routes.js",
     "groupTitle": "教程模块--_tutorial",
     "name": "DeleteApiTutorial"
   },
@@ -248,7 +248,7 @@
       }
     },
     "version": "0.0.0",
-    "filename": "app/routes/modules/turorial.routes.js",
+    "filename": "app/routes/modules/backend/turorial.routes.js",
     "groupTitle": "教程模块--_tutorial",
     "name": "DeleteApiTutorialId"
   },
@@ -271,7 +271,7 @@
       }
     },
     "version": "0.0.0",
-    "filename": "app/routes/modules/turorial.routes.js",
+    "filename": "app/routes/modules/backend/turorial.routes.js",
     "groupTitle": "教程模块--_tutorial",
     "name": "GetApiTutorial"
   },
@@ -294,7 +294,7 @@
       }
     },
     "version": "0.0.0",
-    "filename": "app/routes/modules/turorial.routes.js",
+    "filename": "app/routes/modules/backend/turorial.routes.js",
     "groupTitle": "教程模块--_tutorial",
     "name": "GetApiTutorialFastmock"
   },
@@ -317,7 +317,7 @@
       }
     },
     "version": "0.0.0",
-    "filename": "app/routes/modules/turorial.routes.js",
+    "filename": "app/routes/modules/backend/turorial.routes.js",
     "groupTitle": "教程模块--_tutorial",
     "name": "GetApiTutorialFielddescription"
   },
@@ -340,7 +340,7 @@
       }
     },
     "version": "0.0.0",
-    "filename": "app/routes/modules/turorial.routes.js",
+    "filename": "app/routes/modules/backend/turorial.routes.js",
     "groupTitle": "教程模块--_tutorial",
     "name": "GetApiTutorialId"
   },
@@ -363,7 +363,7 @@
       }
     },
     "version": "0.0.0",
-    "filename": "app/routes/modules/turorial.routes.js",
+    "filename": "app/routes/modules/backend/turorial.routes.js",
     "groupTitle": "教程模块--_tutorial",
     "name": "GetApiTutorialPublished"
   },
@@ -386,7 +386,7 @@
       }
     },
     "version": "0.0.0",
-    "filename": "app/routes/modules/turorial.routes.js",
+    "filename": "app/routes/modules/backend/turorial.routes.js",
     "groupTitle": "教程模块--_tutorial",
     "name": "PostApiTutorial"
   },
@@ -409,7 +409,7 @@
       }
     },
     "version": "0.0.0",
-    "filename": "app/routes/modules/turorial.routes.js",
+    "filename": "app/routes/modules/backend/turorial.routes.js",
     "groupTitle": "教程模块--_tutorial",
     "name": "PutApiTutorialId"
   },
@@ -432,7 +432,7 @@
       }
     },
     "version": "0.0.0",
-    "filename": "app/routes/modules/artical.routes.js",
+    "filename": "app/routes/modules/backend/artical.routes.js",
     "groupTitle": "文章模块--_artical",
     "name": "DeleteApiArtical"
   },
@@ -455,7 +455,7 @@
       }
     },
     "version": "0.0.0",
-    "filename": "app/routes/modules/artical.routes.js",
+    "filename": "app/routes/modules/backend/artical.routes.js",
     "groupTitle": "文章模块--_artical",
     "name": "DeleteApiArticalId"
   },
@@ -478,7 +478,7 @@
       }
     },
     "version": "0.0.0",
-    "filename": "app/routes/modules/artical.routes.js",
+    "filename": "app/routes/modules/backend/artical.routes.js",
     "groupTitle": "文章模块--_artical",
     "name": "GetApiArtical"
   },
@@ -501,7 +501,7 @@
       }
     },
     "version": "0.0.0",
-    "filename": "app/routes/modules/artical.routes.js",
+    "filename": "app/routes/modules/backend/artical.routes.js",
     "groupTitle": "文章模块--_artical",
     "name": "GetApiArticalFastmock"
   },
@@ -524,7 +524,7 @@
       }
     },
     "version": "0.0.0",
-    "filename": "app/routes/modules/artical.routes.js",
+    "filename": "app/routes/modules/backend/artical.routes.js",
     "groupTitle": "文章模块--_artical",
     "name": "GetApiArticalFielddescription"
   },
@@ -547,7 +547,7 @@
       }
     },
     "version": "0.0.0",
-    "filename": "app/routes/modules/artical.routes.js",
+    "filename": "app/routes/modules/backend/artical.routes.js",
     "groupTitle": "文章模块--_artical",
     "name": "GetApiArticalFindallbysex"
   },
@@ -570,7 +570,7 @@
       }
     },
     "version": "0.0.0",
-    "filename": "app/routes/modules/artical.routes.js",
+    "filename": "app/routes/modules/backend/artical.routes.js",
     "groupTitle": "文章模块--_artical",
     "name": "GetApiArticalId"
   },
@@ -593,7 +593,7 @@
       }
     },
     "version": "0.0.0",
-    "filename": "app/routes/modules/artical.routes.js",
+    "filename": "app/routes/modules/backend/artical.routes.js",
     "groupTitle": "文章模块--_artical",
     "name": "PostApiArtical"
   },
@@ -616,147 +616,9 @@
       }
     },
     "version": "0.0.0",
-    "filename": "app/routes/modules/artical.routes.js",
+    "filename": "app/routes/modules/backend/artical.routes.js",
     "groupTitle": "文章模块--_artical",
     "name": "PutApiArticalId"
-  },
-  {
-    "type": "delete",
-    "url": "/api/authentication",
-    "title": "删除所有权限",
-    "group": "权限模块--_authentication",
-    "success": {
-      "fields": {
-        "Success 200": [
-          {
-            "group": "Success 200",
-            "type": "Object",
-            "optional": false,
-            "field": "all",
-            "description": "<p>详细字段说明看 /api/authentication/fieldDescription</p>"
-          }
-        ]
-      }
-    },
-    "version": "0.0.0",
-    "filename": "app/routes/modules/authentication.routes.js",
-    "groupTitle": "权限模块--_authentication",
-    "name": "DeleteApiAuthentication"
-  },
-  {
-    "type": "delete",
-    "url": "/api/authentication/:id",
-    "title": "删除单个权限",
-    "group": "权限模块--_authentication",
-    "success": {
-      "fields": {
-        "Success 200": [
-          {
-            "group": "Success 200",
-            "type": "Object",
-            "optional": false,
-            "field": "all",
-            "description": "<p>详细字段说明看 /api/authentication/fieldDescription</p>"
-          }
-        ]
-      }
-    },
-    "version": "0.0.0",
-    "filename": "app/routes/modules/authentication.routes.js",
-    "groupTitle": "权限模块--_authentication",
-    "name": "DeleteApiAuthenticationId"
-  },
-  {
-    "type": "get",
-    "url": "/api/authentication",
-    "title": "查询所有权限",
-    "group": "权限模块--_authentication",
-    "success": {
-      "fields": {
-        "Success 200": [
-          {
-            "group": "Success 200",
-            "type": "Object",
-            "optional": false,
-            "field": "all",
-            "description": "<p>详细字段说明看 /api/authentication/fieldDescription</p>"
-          }
-        ]
-      }
-    },
-    "version": "0.0.0",
-    "filename": "app/routes/modules/authentication.routes.js",
-    "groupTitle": "权限模块--_authentication",
-    "name": "GetApiAuthentication"
-  },
-  {
-    "type": "get",
-    "url": "/api/authentication/fieldDescription",
-    "title": "返回权限表字段信息说明",
-    "group": "权限模块--_authentication",
-    "success": {
-      "fields": {
-        "Success 200": [
-          {
-            "group": "Success 200",
-            "type": "Object",
-            "optional": false,
-            "field": "all",
-            "description": "<p>详细字段说明看 /api/authentication/fieldDescription</p>"
-          }
-        ]
-      }
-    },
-    "version": "0.0.0",
-    "filename": "app/routes/modules/authentication.routes.js",
-    "groupTitle": "权限模块--_authentication",
-    "name": "GetApiAuthenticationFielddescription"
-  },
-  {
-    "type": "get",
-    "url": "/api/authentication/:id",
-    "title": "查询单个权限",
-    "group": "权限模块--_authentication",
-    "success": {
-      "fields": {
-        "Success 200": [
-          {
-            "group": "Success 200",
-            "type": "Object",
-            "optional": false,
-            "field": "all",
-            "description": "<p>详细字段说明看 /api/authentication/fieldDescription</p>"
-          }
-        ]
-      }
-    },
-    "version": "0.0.0",
-    "filename": "app/routes/modules/authentication.routes.js",
-    "groupTitle": "权限模块--_authentication",
-    "name": "GetApiAuthenticationId"
-  },
-  {
-    "type": "get",
-    "url": "/api/authentication/published",
-    "title": "查询所有已发布权限",
-    "group": "权限模块--_authentication",
-    "success": {
-      "fields": {
-        "Success 200": [
-          {
-            "group": "Success 200",
-            "type": "Object",
-            "optional": false,
-            "field": "all",
-            "description": "<p>详细字段说明看 /api/authentication/fieldDescription</p>"
-          }
-        ]
-      }
-    },
-    "version": "0.0.0",
-    "filename": "app/routes/modules/authentication.routes.js",
-    "groupTitle": "权限模块--_authentication",
-    "name": "GetApiAuthenticationPublished"
   },
   {
     "type": "post",
@@ -777,32 +639,9 @@
       }
     },
     "version": "0.0.0",
-    "filename": "app/routes/modules/authentication.routes.js",
+    "filename": "app/routes/modules/backend/authentication.routes.js",
     "groupTitle": "权限模块--_authentication",
     "name": "PostApiAuthentication"
-  },
-  {
-    "type": "put",
-    "url": "/api/authentication/:id",
-    "title": "修改单个权限",
-    "group": "权限模块--_authentication",
-    "success": {
-      "fields": {
-        "Success 200": [
-          {
-            "group": "Success 200",
-            "type": "Object",
-            "optional": false,
-            "field": "all",
-            "description": "<p>详细字段说明看 /api/authentication/fieldDescription</p>"
-          }
-        ]
-      }
-    },
-    "version": "0.0.0",
-    "filename": "app/routes/modules/authentication.routes.js",
-    "groupTitle": "权限模块--_authentication",
-    "name": "PutApiAuthenticationId"
   },
   {
     "type": "post",
@@ -823,7 +662,53 @@
       }
     },
     "version": "0.0.0",
-    "filename": "app/routes/modules/file.routes.js",
+    "filename": "app/routes/modules/backend/file.routes.js",
+    "groupTitle": "用户模块--_file",
+    "name": "PostApiFile"
+  },
+  {
+    "type": "post",
+    "url": "/api/file",
+    "title": "创建一个用户",
+    "group": "用户模块--_file",
+    "success": {
+      "fields": {
+        "Success 200": [
+          {
+            "group": "Success 200",
+            "type": "Object",
+            "optional": false,
+            "field": "all",
+            "description": "<p>详细字段说明看 /api/file/fieldDescription</p>"
+          }
+        ]
+      }
+    },
+    "version": "0.0.0",
+    "filename": "app/routes/modules/frontend/client.routes.js",
+    "groupTitle": "用户模块--_file",
+    "name": "PostApiFile"
+  },
+  {
+    "type": "post",
+    "url": "/api/file",
+    "title": "创建一个用户",
+    "group": "用户模块--_file",
+    "success": {
+      "fields": {
+        "Success 200": [
+          {
+            "group": "Success 200",
+            "type": "Object",
+            "optional": false,
+            "field": "all",
+            "description": "<p>详细字段说明看 /api/file/fieldDescription</p>"
+          }
+        ]
+      }
+    },
+    "version": "0.0.0",
+    "filename": "app/routes/modules/frontend/file.routes.js",
     "groupTitle": "用户模块--_file",
     "name": "PostApiFile"
   },
@@ -846,7 +731,7 @@
       }
     },
     "version": "0.0.0",
-    "filename": "app/routes/modules/user.routes.js",
+    "filename": "app/routes/modules/backend/user.routes.js",
     "groupTitle": "用户模块--_user",
     "name": "DeleteApiUser"
   },
@@ -869,7 +754,7 @@
       }
     },
     "version": "0.0.0",
-    "filename": "app/routes/modules/user.routes.js",
+    "filename": "app/routes/modules/backend/user.routes.js",
     "groupTitle": "用户模块--_user",
     "name": "DeleteApiUserId"
   },
@@ -892,7 +777,7 @@
       }
     },
     "version": "0.0.0",
-    "filename": "app/routes/modules/user.routes.js",
+    "filename": "app/routes/modules/backend/user.routes.js",
     "groupTitle": "用户模块--_user",
     "name": "GetApiUser"
   },
@@ -915,7 +800,7 @@
       }
     },
     "version": "0.0.0",
-    "filename": "app/routes/modules/user.routes.js",
+    "filename": "app/routes/modules/backend/user.routes.js",
     "groupTitle": "用户模块--_user",
     "name": "GetApiUserFielddescription"
   },
@@ -938,7 +823,7 @@
       }
     },
     "version": "0.0.0",
-    "filename": "app/routes/modules/user.routes.js",
+    "filename": "app/routes/modules/backend/user.routes.js",
     "groupTitle": "用户模块--_user",
     "name": "GetApiUserId"
   },
@@ -961,7 +846,7 @@
       }
     },
     "version": "0.0.0",
-    "filename": "app/routes/modules/user.routes.js",
+    "filename": "app/routes/modules/backend/user.routes.js",
     "groupTitle": "用户模块--_user",
     "name": "GetApiUserPublished"
   },
@@ -984,7 +869,7 @@
       }
     },
     "version": "0.0.0",
-    "filename": "app/routes/modules/user.routes.js",
+    "filename": "app/routes/modules/backend/user.routes.js",
     "groupTitle": "用户模块--_user",
     "name": "PostApiUser"
   },
@@ -1007,7 +892,7 @@
       }
     },
     "version": "0.0.0",
-    "filename": "app/routes/modules/user.routes.js",
+    "filename": "app/routes/modules/backend/user.routes.js",
     "groupTitle": "用户模块--_user",
     "name": "PutApiUserId"
   }
