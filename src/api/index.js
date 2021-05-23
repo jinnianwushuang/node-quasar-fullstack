@@ -12,4 +12,6 @@ export * as api_artical from "src/api/module/artical.js"
 export * as api_author from "src/api/module/author.js"
 export * as api_login from "src/api/module/login.js"
 
+export * as api_message from "src/api/module/message.js"
+
 

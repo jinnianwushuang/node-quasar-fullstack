@@ -75,7 +75,7 @@ export default {
       });
     },
     on_window_resize(size) {
-      console.log("----size  ---", size);
+      // console.log("----size  ---", size);
       // size.height= size.height<600?600:size.height
       // size.width =size.width<1200?1200:size.width
       this.set_window_size(size);

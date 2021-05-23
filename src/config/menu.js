@@ -30,6 +30,11 @@ const menu_data = [
     path: "artical",
     name: "artical",
   },
+  {
+    title:'健康模块',
+    path:'message',
+    name:'message',
+  }
 
 ];
 export default menu_data

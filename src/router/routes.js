@@ -3,7 +3,7 @@
  * @FilePath       : /node-quasar-fullstack/src/router/routes.js
  * @Description    :
  */
-
+ 
 const routes = [
   { path: '/', component: () => import('src/pages/login/login.vue') },
   {
@@ -41,11 +41,16 @@ const routes = [
 
         component: () => import("src/pages/artical/index.vue")
       },
+      {
+        path:'message',
+        name:'message',
+        component:()=>import("src/pages/message/index.vue")
+      }
 
     ]
   },
 
-  // Always leave this as last one,
+  // Always leave this as last one,   
   // but you can also remove it
   {
     path: "*",
