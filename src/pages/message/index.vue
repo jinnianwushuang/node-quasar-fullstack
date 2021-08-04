@@ -84,6 +84,7 @@ import {api_message} from "src/api/index.js"
                     console.log('params-------发送',params);
                 api_message.get_message_list_data(params).then(res=>{
                     console.log('res',res);
+                    this.table_data= res.data
                 })
 
 

@@ -16,13 +16,14 @@ export const  get_message_list_data =(params,url)=>{
 
       let start_index=(params.page-1)*(params.pageSize)
       let end_index = params.page*params.pageSize-1
-
+      let arr2= arr1.slice(start_index,end_index)
+      
       
 
 
     return Promise.resolve({
         code:200,
-        data:arr1,
+        data:arr2,
         msg:'成功'
      })
 }
