@@ -4,7 +4,8 @@
  * @Description    : 
  */
 export default {
-    state: {
+   
+    state: ()=>{
       window_size: {}
     },
     getters: {

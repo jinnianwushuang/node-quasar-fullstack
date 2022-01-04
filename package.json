@@ -27,7 +27,7 @@
     "prod": "node ./server.js -prod "
   },
   "dependencies": {
-    "@quasar/extras": "^1.0.0",
+    "@quasar/extras": "^1.12.2",
     "axios": "^0.18.1",
     "body-parser": "^1.19.0",
     "colors": "^1.4.0",
@@ -41,14 +41,15 @@
     "mongoose": "^5.8.10",
     "mongoose-paginate-v2": "^1.3.9",
     "opener": "^1.5.2",
-    "quasar": "^1.0.0",
+    "quasar": "^2.4.2",
     "randomstring": "^1.2.1",
     "shelljs": "^0.8.4",
     "time-stamp": "^2.2.0",
-    "vue-i18n": "^8.0.0"
+    "vue-i18n": "^9.2.0-beta.26",
+    "vuex": "^4.0.2"
   },
   "devDependencies": {
-    "@quasar/app": "^2.0.0",
+    "@quasar/app": "^3.2.6",
     "apidoc": "^0.25.0",
     "http-server": "^0.12.3",
     "live-server": "^1.2.1",
@@ -56,7 +57,6 @@
     "npm-run-all": "^4.1.5"
   },
   "browserslist": [
-    "ie >= 11",
     "last 10 Chrome versions",
     "last 10 Firefox versions",
     "last 4 Edge versions",
@@ -68,7 +68,7 @@
     "last 5 Opera versions"
   ],
   "engines": {
-    "node": ">= 10.18.1",
+    "node": ">= 12.22.1",
     "npm": ">= 6.13.4",
     "yarn": ">= 1.21.1"
   }

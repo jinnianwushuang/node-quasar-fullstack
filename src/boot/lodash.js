@@ -1,11 +1,11 @@
-// import something here
 
-// "async" is optional;
-// more info on params: https://quasar.dev/quasar-cli/cli-documentation/boot-files#Anatomy-of-a-boot-file
-// export default async (/* { app, router, Vue ... } */) => {
-//   // something to do
-// }
-import Vue from 'vue'
+import { boot } from 'quasar/wrappers'
+ 
 import lodash from 'lodash'
+ 
+export default boot(({ app }) => {
 
-Vue.prototype.$lodash = lodash
+    app.config.globalProperties.$lodash = lodash
+
+})
+

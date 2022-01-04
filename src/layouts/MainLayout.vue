@@ -30,7 +30,7 @@
       show-if-above
       bordered
       :width="120"
-      content-class="bg-grey-1"
+      class="bg-grey-1"
     >
       <q-list>
         <q-item
@@ -54,6 +54,7 @@
 </template>
 
 <script>
+import { defineComponent, ref } from 'vue'
 import { mapActions } from "vuex";
 
 import menu_data from "src/config/menu.js";

@@ -4,7 +4,7 @@
  * @Description    : 模板 store
  */
 export default {
-  state: {
+  state: ()=>{
     template: "1"
   },
   getters: {
